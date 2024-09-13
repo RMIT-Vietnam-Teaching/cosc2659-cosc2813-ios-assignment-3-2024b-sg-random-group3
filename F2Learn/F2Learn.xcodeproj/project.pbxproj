@@ -19,6 +19,7 @@
 		1773CA742C946F06004FDD1C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1773CA732C946F06004FDD1C /* FirebaseFirestore */; };
 		1773CA762C946F06004FDD1C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1773CA752C946F06004FDD1C /* FirebaseMessaging */; };
 		1773CA782C946F06004FDD1C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1773CA772C946F06004FDD1C /* FirebaseStorage */; };
+		1773CA912C94A4FF004FDD1C /* hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA902C94A4FF004FDD1C /* hello.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		1773CA5F2C946CA3004FDD1C /* F2LearnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnUITests.swift; sourceTree = "<group>"; };
 		1773CA612C946CA3004FDD1C /* F2LearnUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1773CA6E2C946E5B004FDD1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Temp/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1773CA902C94A4FF004FDD1C /* hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = hello.swift; path = F2Learn/View/hello.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		1773CA7B2C9475A5004FDD1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1773CA902C94A4FF004FDD1C /* hello.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1773CA472C946CA1004FDD1C /* ContentView.swift in Sources */,
+				1773CA912C94A4FF004FDD1C /* hello.swift in Sources */,
 				1773CA452C946CA1004FDD1C /* F2LearnApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
