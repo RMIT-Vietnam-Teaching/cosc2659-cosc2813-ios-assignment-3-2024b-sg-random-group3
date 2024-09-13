@@ -14,5 +14,5 @@ extension Color {
     static var onSecondaryColor: Color { .themed(\.onSecondary) }
     static var onBackgroundColor: Color { .themed(\.onBackground) }
     static var onSurfaceColor: Color { .themed(\.onSurface) }
-    static var accentColor: Color { .themed(\.accent) }
+    static var accentColor: Color { .themed(\.accent) }	
 }
