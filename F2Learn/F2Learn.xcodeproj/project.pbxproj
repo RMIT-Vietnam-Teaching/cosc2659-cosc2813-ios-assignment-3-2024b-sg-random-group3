@@ -22,6 +22,9 @@
 		1773CA7F2C9475F1004FDD1C /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA7E2C9475F1004FDD1C /* ColorScheme.swift */; };
 		1773CA812C94760D004FDD1C /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA802C94760D004FDD1C /* ThemeManager.swift */; };
 		1773CA832C947638004FDD1C /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA822C947638004FDD1C /* ColorExtensions.swift */; };
+		1773CA852C947716004FDD1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA842C947716004FDD1C /* User.swift */; };
+		1773CA872C947772004FDD1C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA862C947772004FDD1C /* SignUpView.swift */; };
+		1773CA892C9477A4004FDD1C /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA882C9477A4004FDD1C /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		1773CA7E2C9475F1004FDD1C /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = F2Learn/ColorScheme.swift; sourceTree = SOURCE_ROOT; };
 		1773CA802C94760D004FDD1C /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		1773CA822C947638004FDD1C /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorExtensions.swift; path = F2Learn/ViewModel/ColorExtensions.swift; sourceTree = SOURCE_ROOT; };
+		1773CA842C947716004FDD1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = F2Learn/ViewModel/User.swift; sourceTree = SOURCE_ROOT; };
+		1773CA862C947772004FDD1C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1773CA882C9477A4004FDD1C /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 		1773CA792C94751D004FDD1C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1773CA862C947772004FDD1C /* SignUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				1773CA802C94760D004FDD1C /* ThemeManager.swift */,
+				1773CA882C9477A4004FDD1C /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 			children = (
 				1773CA7E2C9475F1004FDD1C /* ColorScheme.swift */,
 				1773CA822C947638004FDD1C /* ColorExtensions.swift */,
+				1773CA842C947716004FDD1C /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +322,9 @@
 			files = (
 				1773CA472C946CA1004FDD1C /* ContentView.swift in Sources */,
 				1773CA832C947638004FDD1C /* ColorExtensions.swift in Sources */,
+				1773CA892C9477A4004FDD1C /* SignUpViewModel.swift in Sources */,
+				1773CA852C947716004FDD1C /* User.swift in Sources */,
+				1773CA872C947772004FDD1C /* SignUpView.swift in Sources */,
 				1773CA7F2C9475F1004FDD1C /* ColorScheme.swift in Sources */,
 				1773CA452C946CA1004FDD1C /* F2LearnApp.swift in Sources */,
 				1773CA812C94760D004FDD1C /* ThemeManager.swift in Sources */,
