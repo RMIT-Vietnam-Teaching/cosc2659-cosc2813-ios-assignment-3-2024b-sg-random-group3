@@ -14,6 +14,7 @@
 		1773CA562C946CA3004FDD1C /* F2LearnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA552C946CA3004FDD1C /* F2LearnTests.swift */; };
 		1773CA602C946CA3004FDD1C /* F2LearnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA5F2C946CA3004FDD1C /* F2LearnUITests.swift */; };
 		1773CA622C946CA3004FDD1C /* F2LearnUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773CA612C946CA3004FDD1C /* F2LearnUITestsLaunchTests.swift */; };
+		1773CA6F2C946E5B004FDD1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1773CA6E2C946E5B004FDD1C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		1773CA5B2C946CA3004FDD1C /* F2LearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = F2LearnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1773CA5F2C946CA3004FDD1C /* F2LearnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnUITests.swift; sourceTree = "<group>"; };
 		1773CA612C946CA3004FDD1C /* F2LearnUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1773CA6E2C946E5B004FDD1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Temp/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		1773CA432C946CA1004FDD1C /* F2Learn */ = {
 			isa = PBXGroup;
 			children = (
+				1773CA6E2C946E5B004FDD1C /* GoogleService-Info.plist */,
 				1773CA442C946CA1004FDD1C /* F2LearnApp.swift */,
 				1773CA462C946CA1004FDD1C /* ContentView.swift */,
 				1773CA482C946CA3004FDD1C /* Assets.xcassets */,
@@ -233,6 +236,7 @@
 			files = (
 				1773CA4C2C946CA3004FDD1C /* Preview Assets.xcassets in Resources */,
 				1773CA492C946CA3004FDD1C /* Assets.xcassets in Resources */,
+				1773CA6F2C946E5B004FDD1C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
