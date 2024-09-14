@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @StateObject private var authViewModel = AuthViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var fullname = ""
     @State private var email = ""
     @State private var phone = ""
@@ -11,37 +11,34 @@ struct SignUpView: View {
     @State private var alertMessage = ""
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             TextField("Full Name", text: $fullname)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                .autocapitalization(.words)
             
             TextField("Email", text: $email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.emailAddress)
                 .autocapitalization(.none)
-                .padding()
+                .keyboardType(.emailAddress)
             
             TextField("Phone", text: $phone)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.phonePad)
-                .padding()
             
             SecureField("Password", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
             
             SecureField("Confirm Password", text: $confirmPassword)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
             
-            Button("Sign Up") {
-                signUp()
+            Button(action: signUp) {
+                Text("Sign Up")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
             }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
         }
         .padding()
         .alert(isPresented: $showAlert) {
@@ -64,5 +61,12 @@ struct SignUpView: View {
             }
             showAlert = true
         }
+    }
+}
+
+struct SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUpView()
+            .environmentObject(AuthViewModel())
     }
 }
