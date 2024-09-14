@@ -50,3 +50,4 @@ struct LoginView_Previews: PreviewProvider {
             .environmentObject(AuthViewModel())
     }
 }
+
