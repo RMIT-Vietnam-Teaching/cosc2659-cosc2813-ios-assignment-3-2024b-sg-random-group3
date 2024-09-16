@@ -6,7 +6,6 @@ F2Learn/*.xcodeproj/*
 !F2Learn/*.xcworkspace/contents.xcworkspacedata
 F2Learn/*.xcworkspace/xcuserdata/
 F2Learn/DerivedData/
-F2Learn/.swiftpm/
 
 # Build products
 F2Learn/build/
@@ -56,9 +55,6 @@ F2Learn/*.ipa
 # Playgrounds
 F2Learn/timeline.xctimeline
 F2Learn/playground.xcworkspace
-
-# Firebase
-!F2Learn/GoogleService-Info.plist
 
 # Environment variables
 F2Learn/.env
