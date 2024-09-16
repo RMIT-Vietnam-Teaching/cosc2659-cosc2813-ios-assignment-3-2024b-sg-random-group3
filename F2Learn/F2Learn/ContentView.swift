@@ -8,7 +8,11 @@ struct ContentView: View {
         NavigationView {
             Group {
                 if authViewModel.isAuthenticated {
-                    UserDetailsView()
+                    if authViewModel.currentUser?.role == .admin {
+                        AdminDashboardView()
+                    } else {
+                        UserDetailsView()
+                    }
                 } else {
                     VStack(spacing: 20) {
                         NavigationLink(destination: LoginView()) {
