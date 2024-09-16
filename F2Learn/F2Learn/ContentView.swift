@@ -1,24 +1,65 @@
-//
-//  ContentView.swift
-//  F2Learn
-//
-//  Created by user264955 on 9/16/24.
-//
-
+// ContentView.swift
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            Group {
+                if authViewModel.isAuthenticated {
+                    UserDetailsView()
+                } else {
+                    VStack(spacing: 20) {
+                        NavigationLink(destination: LoginView()) {
+                            Text("Login")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                        
+                        NavigationLink(destination: SignUpView()) {
+                            Text("Sign Up")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                    }
+                    .padding()
+                    .navigationTitle("Welcome")
+                }
+            }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let authenticatedViewModel = AuthViewModel()
+        authenticatedViewModel.currentUser = User(
+            id: "123",
+            fullname: "John Doe",
+            email: "john@example.com",
+            phone: "1234567890",
+            role: .user
+        )
+        authenticatedViewModel.isAuthenticated = true
+        
+        let unauthenticatedViewModel = AuthViewModel()
+        
+        return Group {
+            ContentView()
+                .environmentObject(authenticatedViewModel)
+                .previewDisplayName("Authenticated")
+            
+            ContentView()
+                .environmentObject(unauthenticatedViewModel)
+                .previewDisplayName("Unauthenticated")
+        }
+    }
 }
