@@ -13,27 +13,34 @@ class AuthViewModel: ObservableObject {
     func signUp(fullname: String, email: String, phone: String, password: String, completion: @escaping (Bool, String?) -> Void) {
         auth.createUser(withEmail: email, password: password) { [weak self] authResult, error in
             if let error = error {
+                print("Error creating user in Firebase Auth: \(error.localizedDescription)")
                 completion(false, error.localizedDescription)
                 return
             }
             
             guard let userId = authResult?.user.uid else {
+                print("Failed to get user ID after creating user")
                 completion(false, "Failed to get user ID")
                 return
             }
             
+            print("User created successfully in Firebase Auth with ID: \(userId)")
+            
             let newUser = User(id: userId, fullname: fullname, email: email, phone: phone, role: .user)
             self?.saveUserToFirestore(user: newUser) { success in
                 if success {
+                    print("User data saved successfully to Firestore")
                     self?.currentUser = newUser
                     self?.isAuthenticated = true
                     completion(true, nil)
                 } else {
+                    print("Failed to save user data to Firestore")
                     completion(false, "Failed to save user data")
                 }
             }
         }
     }
+
     
     func signIn(email: String, password: String, completion: @escaping (Bool, String?) -> Void) {
         auth.signIn(withEmail: email, password: password) { [weak self] authResult, error in
@@ -79,10 +86,12 @@ class AuthViewModel: ObservableObject {
                 print("Error saving user data: \(error.localizedDescription)")
                 completion(false)
             } else {
+                print("User data saved successfully to Firestore")
                 completion(true)
             }
         }
     }
+
     
     private func fetchUser(userId: String, completion: @escaping (Bool) -> Void) {
         db.collection("users").document(userId).getDocument { [weak self] document, error in

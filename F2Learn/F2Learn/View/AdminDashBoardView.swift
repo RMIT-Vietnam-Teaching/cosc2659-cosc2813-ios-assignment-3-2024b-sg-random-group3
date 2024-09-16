@@ -5,108 +5,90 @@ struct AdminDashboardView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all)
-                
-                ScrollView {
-                    VStack(spacing: 20) {
-                        headerView
-                        statsGridView
-                        quickActionsView
-                        recentActivityView
-                    }
-                    .padding()
+            ScrollView {
+                VStack(spacing: 20) {
+                    welcomeSection
+                    statsSection
+                    quickActionsSection
+                    recentActivitiesSection
                 }
+                .padding()
             }
             .navigationTitle("Admin Dashboard")
-            .navigationBarItems(trailing: profileButton)
+            .navigationBarItems(trailing: logoutButton)
         }
-        .accentColor(.purple)
     }
     
-    private var headerView: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Welcome back, \(viewModel.adminName)")
+    private var welcomeSection: some View {
+        VStack(alignment: .leading) {
+            Text("Welcome, \(viewModel.adminName)")
                 .font(.title)
                 .fontWeight(.bold)
-            Text("Here's what's happening today")
-                .font(.subheadline)
+            Text("Here's an overview of your app")
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
     }
     
-    private var statsGridView: some View {
+    private var statsSection: some View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
             ForEach(viewModel.stats) { stat in
-                StatCardView(stat: stat)
+                StatCard(stat: stat)
             }
         }
     }
     
-    private var quickActionsView: some View {
+    private var quickActionsSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Quick Actions")
                 .font(.headline)
             
-            HStack(spacing: 20) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
                 ForEach(viewModel.quickActions) { action in
                     QuickActionButton(action: action)
                 }
             }
         }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
     }
     
-    private var recentActivityView: some View {
+    private var recentActivitiesSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Recent Activity")
+            Text("Recent Activities")
                 .font(.headline)
             
             ForEach(viewModel.recentActivities) { activity in
                 ActivityRow(activity: activity)
             }
         }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
     }
     
-    private var profileButton: some View {
-        Button(action: viewModel.showProfile) {
-            Image(systemName: "person.circle")
-                .imageScale(.large)
+    private var logoutButton: some View {
+        Button(action: viewModel.logout) {
+            Text("Logout")
         }
     }
 }
 
-struct StatCardView: View {
+struct StatCard: View {
     let stat: Stat
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(stat.title)
-                .font(.headline)
+                .font(.caption)
                 .foregroundColor(.secondary)
             Text(stat.value)
-                .font(.title)
+                .font(.title2)
                 .fontWeight(.bold)
-            Text(stat.change)
-                .font(.caption)
-                .foregroundColor(stat.change.contains("+") ? .green : .red)
+            if let change = stat.change {
+                Text(change)
+                    .font(.caption)
+                    .foregroundColor(change.hasPrefix("+") ? .green : .red)
+            }
         }
         .padding()
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+        .background(Color.secondary.opacity(0.1))
+        .cornerRadius(10)
     }
 }
 
@@ -121,10 +103,11 @@ struct QuickActionButton: View {
                 Text(action.title)
                     .font(.caption)
             }
-            .foregroundColor(.purple)
-            .frame(width: 80, height: 80)
-            .background(Color.purple.opacity(0.1))
-            .cornerRadius(15)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.blue.opacity(0.1))
+            .foregroundColor(.blue)
+            .cornerRadius(10)
         }
     }
 }
@@ -135,11 +118,7 @@ struct ActivityRow: View {
     var body: some View {
         HStack {
             Image(systemName: activity.icon)
-                .foregroundColor(.purple)
-                .frame(width: 30, height: 30)
-                .background(Color.purple.opacity(0.1))
-                .cornerRadius(8)
-            
+                .foregroundColor(.blue)
             VStack(alignment: .leading) {
                 Text(activity.title)
                     .font(.subheadline)
@@ -148,9 +127,7 @@ struct ActivityRow: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
-            
             Spacer()
-            
             Text(activity.time)
                 .font(.caption2)
                 .foregroundColor(.secondary)
