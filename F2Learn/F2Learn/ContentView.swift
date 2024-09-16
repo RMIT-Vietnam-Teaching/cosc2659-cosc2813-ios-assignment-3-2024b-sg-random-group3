@@ -44,26 +44,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let authenticatedViewModel = AuthViewModel()
-        authenticatedViewModel.currentUser = User(
-            id: "123",
-            fullname: "John Doe",
-            email: "john@example.com",
-            phone: "1234567890",
-            role: .user
-        )
-        authenticatedViewModel.isAuthenticated = true
-        
         let unauthenticatedViewModel = AuthViewModel()
-        
-        return Group {
-            ContentView()
-                .environmentObject(authenticatedViewModel)
-                .previewDisplayName("Authenticated")
-            
-            ContentView()
-                .environmentObject(unauthenticatedViewModel)
-                .previewDisplayName("Unauthenticated")
-        }
+        ContentView()
+            .environmentObject(unauthenticatedViewModel)
+            .previewDisplayName("Unauthenticated")
+    
     }
 }

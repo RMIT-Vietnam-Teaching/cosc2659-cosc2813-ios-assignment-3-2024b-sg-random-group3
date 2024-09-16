@@ -16,6 +16,8 @@ struct UserDetailsView: View {
                     Text("Email: \(user.email)")
                     Text("Phone: \(user.phone)")
                     Text("Role: \(user.role.rawValue)")
+                    Text("Role: \(user.createdDate)")
+                    Text("Role: \(user.lastActive)")
                 }
                 .padding()
                 .background(Color.gray.opacity(0.1))
