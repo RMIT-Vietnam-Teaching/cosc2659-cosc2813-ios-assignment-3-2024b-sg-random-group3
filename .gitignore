@@ -20,10 +20,6 @@ F2Learn/*.dSYM
 F2Learn/Pods/
 F2Learn/Carthage/Build/
 
-# Swift Package Manager
-F2Learn/.build/
-F2Learn/Packages/
-
 # CocoaPods
 F2Learn/*.xcconfig
 F2Learn/Pods/
