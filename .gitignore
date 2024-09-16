@@ -1,0 +1,70 @@
+# Xcode
+F2Learn/xcuserdata/
+F2Learn/*.xcodeproj/*
+!F2Learn/*.xcodeproj/project.pbxproj
+!F2Learn/*.xcodeproj/xcshareddata/
+!F2Learn/*.xcworkspace/contents.xcworkspacedata
+F2Learn/*.xcworkspace/xcuserdata/
+F2Learn/DerivedData/
+F2Learn/.swiftpm/
+
+# Build products
+F2Learn/build/
+F2Learn/*.o
+F2Learn/*.LinkFileList
+F2Learn/*.hmap
+F2Learn/*.ipa
+F2Learn/*.dSYM.zip
+F2Learn/*.dSYM
+
+# Dependency managers
+F2Learn/Pods/
+F2Learn/Carthage/Build/
+
+# Swift Package Manager
+F2Learn/.build/
+F2Learn/Packages/
+
+# CocoaPods
+F2Learn/*.xcconfig
+F2Learn/Pods/
+
+# Fastlane
+F2Learn/fastlane/report.xml
+F2Learn/fastlane/Preview.html
+F2Learn/fastlane/screenshots/**/*.png
+F2Learn/fastlane/test_output
+
+# Code Injection
+F2Learn/injectionforxcode/
+
+# Other
+F2Learn/.DS_Store
+F2Learn/*.swp
+F2Learn/*.lock
+F2Learn/profile
+F2Learn/*.moved-aside
+F2Learn/*.xccheckout
+F2Learn/*.xcscmblueprint
+F2Learn/*.xcuserstate
+F2Learn/.idea/
+
+# Obj-C/Swift specific
+F2Learn/*.hmap
+F2Learn/*.ipa
+
+# Playgrounds
+F2Learn/timeline.xctimeline
+F2Learn/playground.xcworkspace
+
+# Firebase
+!F2Learn/GoogleService-Info.plist
+
+# Environment variables
+F2Learn/.env
+
+# AppCode
+F2Learn/.idea/
+
+# Ignore Mac DS_Store files
+.DS_Store
