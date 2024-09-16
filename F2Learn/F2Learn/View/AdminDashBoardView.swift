@@ -2,6 +2,8 @@ import SwiftUI
 
 struct AdminDashboardView: View {
     @ObservedObject var viewModel: AdminDashboardViewModel
+    @State private var showUserListView = false
+
     
     var body: some View {
         NavigationView {
@@ -45,9 +47,20 @@ struct AdminDashboardView: View {
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
                 ForEach(viewModel.quickActions) { action in
-                    QuickActionButton(action: action)
+                    if action.title == "Manage Users" {
+                        QuickActionButton(action: action, onTap: {
+                            showUserListView = true
+                        })
+                    } else {
+                        QuickActionButton(action: action, onTap: {
+                            print("Tapped on \(action.title)")
+                        })
+                    }
                 }
             }
+        }
+        .sheet(isPresented: $showUserListView) {
+            UserListView(viewModel: viewModel)
         }
     }
     
@@ -94,9 +107,10 @@ struct StatCard: View {
 
 struct QuickActionButton: View {
     let action: QuickAction
+    let onTap: () -> Void
     
     var body: some View {
-        Button(action: {}) {
+        Button(action: onTap) {
             VStack {
                 Image(systemName: action.icon)
                     .font(.largeTitle)

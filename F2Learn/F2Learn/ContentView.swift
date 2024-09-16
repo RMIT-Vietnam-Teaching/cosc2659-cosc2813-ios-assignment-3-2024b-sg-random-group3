@@ -44,10 +44,43 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let unauthenticatedViewModel = AuthViewModel()
-        ContentView()
-            .environmentObject(unauthenticatedViewModel)
-            .previewDisplayName("Unauthenticated")
+        Group {
+            // Unauthenticated
+            ContentView()
+                .environmentObject(mockUnauthenticatedViewModel())
+                .previewDisplayName("Unauthenticated")
+            
+            // Admin
+            ContentView()
+                .environmentObject(mockAdminViewModel())
+                .previewDisplayName("Admin")
+            
+            // Regular User
+            ContentView()
+                .environmentObject(mockUserViewModel())
+                .previewDisplayName("User")
+        }
+    }
     
+    static func mockUnauthenticatedViewModel() -> AuthViewModel {
+        let vm = AuthViewModel()
+        vm.isAuthenticated = false
+        return vm
+    }
+    
+    static func mockAdminViewModel() -> AuthViewModel {
+        let vm = AuthViewModel()
+        vm.isAuthenticated = true
+        vm.currentUser = User(id: "admin_id", fullname: "Admin User", email: "s3911737@rmit.edu.vn", phone: "1234567890", role: .admin, createdDate: Date(), lastActive: Date())
+        return vm
+    }
+    
+    static func mockUserViewModel() -> AuthViewModel {
+        let vm = AuthViewModel()
+        vm.isAuthenticated = true
+        vm.currentUser = User(id: "user_id", fullname: "Minh User", email: "minh@gmail.com", phone: "9876543210", role: .user, createdDate: Date(), lastActive: Date())
+        return vm
     }
 }
+
+

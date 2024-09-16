@@ -1,10 +1,13 @@
 import SwiftUI
 import Firebase
+import FirebaseFirestore
+
 
 class AdminDashboardViewModel: ObservableObject {
     @Published var stats: [Stat] = []
     @Published var quickActions: [QuickAction] = []
     @Published var recentActivities: [RecentActivity] = []
+    @Published var users: [User] = []
     
     private var db = Firestore.firestore()
     var authViewModel: AuthViewModel
@@ -110,5 +113,61 @@ class AdminDashboardViewModel: ObservableObject {
     
     func logout() {
         authViewModel.signOut()
+    }
+    
+    func fetchAllUsers() {
+        db.collection("users").getDocuments { [weak self] (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching users: \(error.localizedDescription)")
+                return
+            }
+            
+            self?.users = querySnapshot?.documents.compactMap { document -> User? in
+                let data = document.data()
+                guard let id = document.documentID as String?,
+                      let fullname = data["fullname"] as? String,
+                      let email = data["email"] as? String,
+                      let phone = data["phone"] as? String,
+                      let roleString = data["role"] as? String,
+                      let role = User.UserRole(rawValue: roleString),
+                      let createdDate = (data["createdDate"] as? Timestamp)?.dateValue(),
+                      let lastActive = (data["lastActive"] as? Timestamp)?.dateValue() else {
+                    return nil
+                }
+                return User(id: id, fullname: fullname, email: email, phone: phone, role: role, createdDate: createdDate, lastActive: lastActive)
+            } ?? []
+            
+            DispatchQueue.main.async {
+                self?.objectWillChange.send()
+            }
+        }
+    }
+    
+    func updateUser(user: User, completion: @escaping (Bool) -> Void) {
+        db.collection("users").document(user.id).updateData([
+            "fullname": user.fullname,
+            "email": user.email,
+            "phone": user.phone
+        ]) { error in
+            if let error = error {
+                print("Error updating user: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                self.fetchAllUsers()
+                completion(true)
+            }
+        }
+    }
+    
+    func deleteUser(userId: String, completion: @escaping (Bool) -> Void) {
+        db.collection("users").document(userId).delete { error in
+            if let error = error {
+                print("Error deleting user: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                self.fetchAllUsers()
+                completion(true)
+            }
+        }
     }
 }
