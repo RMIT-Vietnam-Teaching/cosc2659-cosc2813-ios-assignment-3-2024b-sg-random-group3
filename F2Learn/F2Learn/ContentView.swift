@@ -9,7 +9,7 @@ struct ContentView: View {
             Group {
                 if authViewModel.isAuthenticated {
                     if authViewModel.currentUser?.role == .admin {
-                        AdminDashboardView()
+                        AdminDashboardView(viewModel: AdminDashboardViewModel(authViewModel: authViewModel))
                     } else {
                         UserDetailsView()
                     }
