@@ -3,6 +3,11 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var tabSelected: Tab = .house
+    
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
     
     var body: some View {
         NavigationView {
@@ -32,6 +37,25 @@ struct ContentView: View {
                     .padding()
                     .navigationTitle("Welcome")
                 }
+            }
+        }
+        ZStack {
+            VStack {
+                TabView(selection: $tabSelected) {
+                    ForEach(Tab.allCases, id: \.rawValue) { tab in
+                        HStack {
+                            Image(systemName: tab.rawValue)
+                            Text("\(tab.rawValue.capitalized)")
+                                .bold()
+                                .animation(nil, value: tabSelected)
+                        }
+                        .tag(tab)
+                    }
+                }
+            }
+            VStack {
+                Spacer()
+                NavBarView(selectedTab: $tabSelected)
             }
         }
     }
