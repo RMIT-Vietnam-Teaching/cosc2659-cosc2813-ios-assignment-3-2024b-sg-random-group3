@@ -20,6 +20,7 @@
 		17F56D1D2C97EE7E00055429 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 17F56D1C2C97EE7E00055429 /* FirebaseFirestore */; };
 		17F56D1F2C97EE7E00055429 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 17F56D1E2C97EE7E00055429 /* FirebaseMessaging */; };
 		17F56D212C97EE7E00055429 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 17F56D202C97EE7E00055429 /* FirebaseStorage */; };
+		17F56D252C97EFCB00055429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17F56D242C97EFCB00055429 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		17F56D052C97ED6800055429 /* F2LearnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnUITests.swift; sourceTree = "<group>"; };
 		17F56D072C97ED6800055429 /* F2LearnUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		17F56D152C97ED8E00055429 /* temp.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = temp.txt; sourceTree = "<group>"; };
+		17F56D242C97EFCB00055429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Temp/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		17F56CE92C97ED6600055429 /* F2Learn */ = {
 			isa = PBXGroup;
 			children = (
+				17F56D242C97EFCB00055429 /* GoogleService-Info.plist */,
 				17F56D142C97ED7300055429 /* Temp */,
 				17F56CEA2C97ED6600055429 /* F2LearnApp.swift */,
 				17F56CEC2C97ED6600055429 /* ContentView.swift */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17F56CF22C97ED6800055429 /* Preview Assets.xcassets in Resources */,
+				17F56D252C97EFCB00055429 /* GoogleService-Info.plist in Resources */,
 				17F56D162C97ED8E00055429 /* temp.txt in Resources */,
 				17F56CEF2C97ED6800055429 /* Assets.xcassets in Resources */,
 			);
