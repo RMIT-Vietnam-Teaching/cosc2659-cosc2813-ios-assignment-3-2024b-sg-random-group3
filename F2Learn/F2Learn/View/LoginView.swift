@@ -11,10 +11,10 @@ struct LoginView: View {
     var body: some View {
         VStack{
             // App Icon
-            Image("AppIcon")
+            Image("appPic")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100, height: 120)
+                .frame(width: 300, height: 300)
                 .padding(.vertical, 32)
             
             VStack(spacing: 24){

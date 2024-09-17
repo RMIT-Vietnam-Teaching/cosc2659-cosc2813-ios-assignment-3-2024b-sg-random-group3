@@ -15,10 +15,10 @@ struct ContentView: View {
                 } else {
                     VStack(spacing: 40) {
                         // App Logo
-                        Image("AppLogo")
+                        Image("appPic")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 150, height: 150) // Adjust size as needed
+                            .frame(width: 300, height: 300) // Adjust size as needed
                             .padding(.top, 40)
                         
                         // Login Button

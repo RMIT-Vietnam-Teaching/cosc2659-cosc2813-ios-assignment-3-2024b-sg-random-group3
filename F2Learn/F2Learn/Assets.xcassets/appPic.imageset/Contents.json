@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Screenshot 2024-09-16 at 11.37.53.png",
+      "filename" : "appPic.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Screenshot 2024-09-16 at 11.37.53@2x.png",
+      "filename" : "appPic@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Screenshot 2024-09-16 at 11.37.53@3x.png",
+      "filename" : "appPic@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
