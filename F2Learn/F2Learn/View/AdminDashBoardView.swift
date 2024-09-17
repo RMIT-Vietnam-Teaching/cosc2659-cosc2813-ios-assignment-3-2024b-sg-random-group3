@@ -2,9 +2,8 @@ import SwiftUI
 
 struct AdminDashboardView: View {
     @ObservedObject var viewModel: AdminDashboardViewModel
-    @State private var showUserListView = false
+    @State private var isShowingUserList = false
 
-    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -18,6 +17,13 @@ struct AdminDashboardView: View {
             }
             .navigationTitle("Admin Dashboard")
             .navigationBarItems(trailing: logoutButton)
+            .background(
+                NavigationLink(
+                    destination: UserListView(viewModel: viewModel),
+                    isActive: $isShowingUserList,
+                    label: { EmptyView() }
+                )
+            )
         }
     }
     
@@ -41,28 +47,23 @@ struct AdminDashboardView: View {
     }
     
     private var quickActionsSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Quick Actions")
-                .font(.headline)
-            
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
-                ForEach(viewModel.quickActions) { action in
-                    if action.title == "Manage Users" {
-                        QuickActionButton(action: action, onTap: {
-                            showUserListView = true
-                        })
-                    } else {
-                        QuickActionButton(action: action, onTap: {
-                            print("Tapped on \(action.title)")
-                        })
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Quick Actions")
+                    .font(.headline)
+                
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
+                    ForEach(viewModel.quickActions) { action in
+                        QuickActionButton(action: action) {
+                            if action.title == "Manage Users" {
+                                isShowingUserList = true
+                            } else {
+                                print("Tapped on \(action.title)")
+                            }
+                        }
                     }
                 }
             }
         }
-        .sheet(isPresented: $showUserListView) {
-            UserListView(viewModel: viewModel)
-        }
-    }
     
     private var recentActivitiesSection: some View {
         VStack(alignment: .leading, spacing: 10) {
