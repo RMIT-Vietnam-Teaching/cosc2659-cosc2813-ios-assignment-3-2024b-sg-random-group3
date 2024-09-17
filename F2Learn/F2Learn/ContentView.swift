@@ -1,4 +1,3 @@
-// ContentView.swift
 import SwiftUI
 
 struct ContentView: View {
@@ -15,32 +14,37 @@ struct ContentView: View {
                     }
                 } else {
                     VStack(spacing: 20) {
+                        // Login Button
                         NavigationLink(destination: LoginView()) {
                             Text("Login")
+                                .fontWeight(.semibold)
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.blue)
+                                .background(Color("primarycolor")) // Primary color from assets
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
                         
+                        // Sign Up Button
                         NavigationLink(destination: SignUpView()) {
                             Text("Sign Up")
+                                .fontWeight(.semibold)
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.green)
+                                .background(Color("secondarycolor")) // Secondary color from assets
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
                     }
                     .padding()
+                    .background(Color("bgcolor").edgesIgnoringSafeArea(.all)) // Background color from assets
                     .navigationTitle("Welcome")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -62,6 +66,7 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
     
+    // Mock view models for preview
     static func mockUnauthenticatedViewModel() -> AuthViewModel {
         let vm = AuthViewModel()
         vm.isAuthenticated = false
@@ -82,5 +87,3 @@ struct ContentView_Previews: PreviewProvider {
         return vm
     }
 }
-
-
