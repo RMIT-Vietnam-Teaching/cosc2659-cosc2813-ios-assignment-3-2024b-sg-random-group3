@@ -1,6 +1,6 @@
 # Xcode
 F2Learn/xcuserdata/
-F2Learn/*.xcodeproj/*
+!F2Learn/*.xcodeproj/*
 !F2Learn/*.xcodeproj/project.pbxproj
 !F2Learn/*.xcodeproj/xcshareddata/
 !F2Learn/*.xcworkspace/contents.xcworkspacedata
