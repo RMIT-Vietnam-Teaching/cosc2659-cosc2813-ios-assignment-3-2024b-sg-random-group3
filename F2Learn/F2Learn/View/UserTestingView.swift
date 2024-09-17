@@ -1,4 +1,3 @@
-// User Details View for testing the user information from the database
 import SwiftUI
 
 struct UserTestingView: View {

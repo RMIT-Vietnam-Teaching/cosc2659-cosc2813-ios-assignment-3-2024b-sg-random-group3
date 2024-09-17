@@ -12,6 +12,7 @@
 		170FF0A92C9825B8004118C8 /* AdminDashBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FF0A82C9825B8004118C8 /* AdminDashBoardModel.swift */; };
 		1781C4792C987DC40084AA52 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C4782C987DC40084AA52 /* UserListView.swift */; };
 		1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C47A2C987DF70084AA52 /* UserDetailView.swift */; };
+		17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C185562C997DAA00FFE397 /* UserTestingView.swift */; };
 		17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEA2C97ED6600055429 /* F2LearnApp.swift */; };
 		17F56CED2C97ED6600055429 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEC2C97ED6600055429 /* ContentView.swift */; };
 		17F56CEF2C97ED6800055429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F56CEE2C97ED6800055429 /* Assets.xcassets */; };
@@ -30,7 +31,6 @@
 		17F56D2B2C97F5BB00055429 /* AuthVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2A2C97F5BB00055429 /* AuthVIewModel.swift */; };
 		17F56D2E2C97F5E100055429 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2D2C97F5E100055429 /* LoginView.swift */; };
 		17F56D302C97F5FA00055429 /* SignUpVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */; };
-		17F56D322C97F61F00055429 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D312C97F61F00055429 /* UserDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +56,7 @@
 		170FF0A82C9825B8004118C8 /* AdminDashBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdminDashBoardModel.swift; path = F2Learn/ViewModel/AdminDashBoardModel.swift; sourceTree = SOURCE_ROOT; };
 		1781C4782C987DC40084AA52 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1781C47A2C987DF70084AA52 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		17C185562C997DAA00FFE397 /* UserTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTestingView.swift; sourceTree = "<group>"; };
 		17F56CE72C97ED6600055429 /* F2Learn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F2Learn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F56CEA2C97ED6600055429 /* F2LearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnApp.swift; sourceTree = "<group>"; };
 		17F56CEC2C97ED6600055429 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		17F56D2A2C97F5BB00055429 /* AuthVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVIewModel.swift; sourceTree = "<group>"; };
 		17F56D2D2C97F5E100055429 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVIew.swift; sourceTree = "<group>"; };
-		17F56D312C97F61F00055429 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,10 +197,10 @@
 			children = (
 				17F56D2D2C97F5E100055429 /* LoginView.swift */,
 				17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */,
-				17F56D312C97F61F00055429 /* UserDetailsView.swift */,
 				170FF0A42C981BEE004118C8 /* AdminDashBoardView.swift */,
 				1781C4782C987DC40084AA52 /* UserListView.swift */,
 				1781C47A2C987DF70084AA52 /* UserDetailView.swift */,
+				17C185562C997DAA00FFE397 /* UserTestingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17F56D322C97F61F00055429 /* UserDetailsView.swift in Sources */,
+				17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */,
 				17F56D302C97F5FA00055429 /* SignUpVIew.swift in Sources */,
 				17F56D2B2C97F5BB00055429 /* AuthVIewModel.swift in Sources */,
 				17F56CED2C97ED6600055429 /* ContentView.swift in Sources */,
