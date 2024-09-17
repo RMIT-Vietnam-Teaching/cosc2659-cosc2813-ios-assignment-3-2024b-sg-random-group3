@@ -1,4 +1,3 @@
-// ContentView.swift
 import SwiftUI
 
 struct ContentView: View {
@@ -14,33 +13,45 @@ struct ContentView: View {
                         UserDetailsView()
                     }
                 } else {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 40) {
+                        // App Logo
+                        Image("AppLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150) // Adjust size as needed
+                            .padding(.top, 40)
+                        
+                        // Login Button
                         NavigationLink(destination: LoginView()) {
                             Text("Login")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
+                                .fontWeight(.semibold)
+                                .frame(width: UIScreen.main.bounds.width - 40, height: 50)
+                                .background(Color("primarycolor")) // Primary color from assets
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
                         
+                        // Sign Up Button
                         NavigationLink(destination: SignUpView()) {
                             Text("Sign Up")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.green)
+                                .fontWeight(.semibold)
+                                .frame(width: UIScreen.main.bounds.width - 40, height: 50)
+                                .background(Color("secondarycolor")) // Secondary color from assets
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
+                        
+                        Spacer()
                     }
                     .padding()
+                    .background(Color("bgcolor").edgesIgnoringSafeArea(.all)) // Background color from assets
                     .navigationTitle("Welcome")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

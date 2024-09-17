@@ -1,4 +1,3 @@
-//LoginView.swift
 import SwiftUI
 
 struct LoginView: View {
@@ -10,25 +9,73 @@ struct LoginView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack(spacing: 20) {
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-                .keyboardType(.emailAddress)
+        VStack{
+            // App Icon
+            Image("AppIcon")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 120)
+                .padding(.vertical, 32)
             
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            VStack(spacing: 24){
+                // Email Input
+                InputView(text: $email,
+                          title: "Email Address",
+                          placeholder: "name@gmail.com")
+                .textInputAutocapitalization(.never)
+                .padding()
+                .background(Color.white)  // White background for input
+                .cornerRadius(10)
+                .shadow(radius: 5)
+                
+                // Password Input
+                InputView(text: $password,
+                          title: "Password",
+                          placeholder: "Enter your password",
+                          isSecureField: true)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+            }
+            .padding(.horizontal)
+            .padding(.top, 12)
             
-            Button(action: login) {
-                Text("Log In")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            // Sign In Button
+            Button {
+                login() // Your login function
+            } label: {
+                HStack {
+                    Text("SIGN IN")
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                    Image(systemName: "arrow.right")
+                        .foregroundColor(.white)
+                }
+                .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+                .background(Color("primarycolor")) // Primary color from asset
+                .cornerRadius(10)
+            }
+            .padding(.top, 24)
+            
+            Spacer()
+            
+            // Navigation to Sign Up
+            NavigationLink {
+                SignUpView()
+            } label: {
+                HStack(spacing: 3){
+                    Text("Don't Have An Account?")
+                        .foregroundColor(.gray) // Neutral color
+                    Text("Sign Up")
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("secondarycolor")) // Secondary color from asset
+                }
+                .font(.system(size: 14))
             }
         }
         .padding()
+        .background(Color("bgcolor").edgesIgnoringSafeArea(.all)) // Background color from asset
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Log In"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
