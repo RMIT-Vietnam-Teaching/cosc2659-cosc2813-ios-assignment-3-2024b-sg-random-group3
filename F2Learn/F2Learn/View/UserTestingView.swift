@@ -1,7 +1,7 @@
 // User Details View for testing the user information from the database
 import SwiftUI
 
-struct UserDetailsView: View {
+struct UserTestingView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
