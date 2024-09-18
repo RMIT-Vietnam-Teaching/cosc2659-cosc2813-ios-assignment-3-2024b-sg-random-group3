@@ -12,6 +12,7 @@
 		170FF0A92C9825B8004118C8 /* AdminDashBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FF0A82C9825B8004118C8 /* AdminDashBoardModel.swift */; };
 		1781C4792C987DC40084AA52 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C4782C987DC40084AA52 /* UserListView.swift */; };
 		1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C47A2C987DF70084AA52 /* UserDetailView.swift */; };
+		179DBB582C9A980000EEA2DF /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB572C9A980000EEA2DF /* Hello.swift */; };
 		17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C185562C997DAA00FFE397 /* UserTestingView.swift */; };
 		17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEA2C97ED6600055429 /* F2LearnApp.swift */; };
 		17F56CED2C97ED6600055429 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEC2C97ED6600055429 /* ContentView.swift */; };
@@ -56,6 +57,7 @@
 		170FF0A82C9825B8004118C8 /* AdminDashBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdminDashBoardModel.swift; path = F2Learn/ViewModel/AdminDashBoardModel.swift; sourceTree = SOURCE_ROOT; };
 		1781C4782C987DC40084AA52 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1781C47A2C987DF70084AA52 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		179DBB572C9A980000EEA2DF /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = SOURCE_ROOT; };
 		17C185562C997DAA00FFE397 /* UserTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTestingView.swift; sourceTree = "<group>"; };
 		17F56CE72C97ED6600055429 /* F2Learn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F2Learn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F56CEA2C97ED6600055429 /* F2LearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnApp.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				17F56D272C97F54800055429 /* User.swift */,
 				170FF0A82C9825B8004118C8 /* AdminDashBoardModel.swift */,
+				179DBB572C9A980000EEA2DF /* Hello.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */,
 				17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */,
 				17F56D2E2C97F5E100055429 /* LoginView.swift in Sources */,
+				179DBB582C9A980000EEA2DF /* Hello.swift in Sources */,
 				170FF0A92C9825B8004118C8 /* AdminDashBoardModel.swift in Sources */,
 				1781C4792C987DC40084AA52 /* UserListView.swift in Sources */,
 				17F56D282C97F54800055429 /* User.swift in Sources */,
