@@ -68,6 +68,16 @@ class PostViewModel: ObservableObject {
             }
         }
     }
+    func rejectPost(postId: String, completion: @escaping (Bool) -> Void) {
+        db.collection("posts").document(postId).delete { error in
+            if let error = error {
+                print("Error rejecting post: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
     
     func fetchUnapprovedPosts() {
         db.collection("posts")
