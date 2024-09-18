@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		170FF0A52C981BEE004118C8 /* AdminDashBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FF0A42C981BEE004118C8 /* AdminDashBoardView.swift */; };
 		170FF0A72C9821CA004118C8 /* AdminDashBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FF0A62C9821CA004118C8 /* AdminDashBoardViewModel.swift */; };
-		170FF0A92C9825B8004118C8 /* AdminDashBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FF0A82C9825B8004118C8 /* AdminDashBoardModel.swift */; };
 		1781C4792C987DC40084AA52 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C4782C987DC40084AA52 /* UserListView.swift */; };
 		1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C47A2C987DF70084AA52 /* UserDetailView.swift */; };
-		179DBB582C9A980000EEA2DF /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB572C9A980000EEA2DF /* Hello.swift */; };
+		179DBB5B2C9A98A500EEA2DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB5A2C9A98A500EEA2DF /* User.swift */; };
+		179DBB5D2C9A98C700EEA2DF /* AdminDashBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */; };
 		17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C185562C997DAA00FFE397 /* UserTestingView.swift */; };
 		17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEA2C97ED6600055429 /* F2LearnApp.swift */; };
 		17F56CED2C97ED6600055429 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEC2C97ED6600055429 /* ContentView.swift */; };
@@ -28,7 +28,6 @@
 		17F56D1F2C97EE7E00055429 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 17F56D1E2C97EE7E00055429 /* FirebaseMessaging */; };
 		17F56D212C97EE7E00055429 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 17F56D202C97EE7E00055429 /* FirebaseStorage */; };
 		17F56D252C97EFCB00055429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17F56D242C97EFCB00055429 /* GoogleService-Info.plist */; };
-		17F56D282C97F54800055429 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D272C97F54800055429 /* User.swift */; };
 		17F56D2B2C97F5BB00055429 /* AuthVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2A2C97F5BB00055429 /* AuthVIewModel.swift */; };
 		17F56D2E2C97F5E100055429 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2D2C97F5E100055429 /* LoginView.swift */; };
 		17F56D302C97F5FA00055429 /* SignUpVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */; };
@@ -54,10 +53,10 @@
 /* Begin PBXFileReference section */
 		170FF0A42C981BEE004118C8 /* AdminDashBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashBoardView.swift; sourceTree = "<group>"; };
 		170FF0A62C9821CA004118C8 /* AdminDashBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashBoardViewModel.swift; sourceTree = "<group>"; };
-		170FF0A82C9825B8004118C8 /* AdminDashBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdminDashBoardModel.swift; path = F2Learn/ViewModel/AdminDashBoardModel.swift; sourceTree = SOURCE_ROOT; };
 		1781C4782C987DC40084AA52 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1781C47A2C987DF70084AA52 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
-		179DBB572C9A980000EEA2DF /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = SOURCE_ROOT; };
+		179DBB5A2C9A98A500EEA2DF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashBoardModel.swift; sourceTree = "<group>"; };
 		17C185562C997DAA00FFE397 /* UserTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTestingView.swift; sourceTree = "<group>"; };
 		17F56CE72C97ED6600055429 /* F2Learn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F2Learn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F56CEA2C97ED6600055429 /* F2LearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnApp.swift; sourceTree = "<group>"; };
@@ -71,7 +70,6 @@
 		17F56D072C97ED6800055429 /* F2LearnUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		17F56D152C97ED8E00055429 /* temp.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = temp.txt; sourceTree = "<group>"; };
 		17F56D242C97EFCB00055429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Temp/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		17F56D272C97F54800055429 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = F2Learn/Temp/User.swift; sourceTree = SOURCE_ROOT; };
 		17F56D2A2C97F5BB00055429 /* AuthVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVIewModel.swift; sourceTree = "<group>"; };
 		17F56D2D2C97F5E100055429 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVIew.swift; sourceTree = "<group>"; };
@@ -107,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		179DBB592C9A989600EEA2DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				179DBB5A2C9A98A500EEA2DF /* User.swift */,
+				179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		17F56CDE2C97ED6600055429 = {
 			isa = PBXGroup;
 			children = (
@@ -130,9 +137,9 @@
 		17F56CE92C97ED6600055429 /* F2Learn */ = {
 			isa = PBXGroup;
 			children = (
+				179DBB592C9A989600EEA2DF /* Model */,
 				17F56D2C2C97F5D300055429 /* View */,
 				17F56D292C97F5A600055429 /* ViewModel */,
-				17F56D262C97F53600055429 /* Model */,
 				17F56D242C97EFCB00055429 /* GoogleService-Info.plist */,
 				17F56D142C97ED7300055429 /* Temp */,
 				17F56CEA2C97ED6600055429 /* F2LearnApp.swift */,
@@ -174,16 +181,6 @@
 				17F56D152C97ED8E00055429 /* temp.txt */,
 			);
 			path = Temp;
-			sourceTree = "<group>";
-		};
-		17F56D262C97F53600055429 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				17F56D272C97F54800055429 /* User.swift */,
-				170FF0A82C9825B8004118C8 /* AdminDashBoardModel.swift */,
-				179DBB572C9A980000EEA2DF /* Hello.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		17F56D292C97F5A600055429 /* ViewModel */ = {
@@ -352,17 +349,16 @@
 			files = (
 				17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */,
 				17F56D302C97F5FA00055429 /* SignUpVIew.swift in Sources */,
+				179DBB5D2C9A98C700EEA2DF /* AdminDashBoardModel.swift in Sources */,
 				17F56D2B2C97F5BB00055429 /* AuthVIewModel.swift in Sources */,
 				17F56CED2C97ED6600055429 /* ContentView.swift in Sources */,
 				1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */,
 				17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */,
 				17F56D2E2C97F5E100055429 /* LoginView.swift in Sources */,
-				179DBB582C9A980000EEA2DF /* Hello.swift in Sources */,
-				170FF0A92C9825B8004118C8 /* AdminDashBoardModel.swift in Sources */,
 				1781C4792C987DC40084AA52 /* UserListView.swift in Sources */,
-				17F56D282C97F54800055429 /* User.swift in Sources */,
 				170FF0A52C981BEE004118C8 /* AdminDashBoardView.swift in Sources */,
 				170FF0A72C9821CA004118C8 /* AdminDashBoardViewModel.swift in Sources */,
+				179DBB5B2C9A98A500EEA2DF /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
