@@ -3,6 +3,7 @@ import Firebase
 
 class PostViewModel: ObservableObject {
     @Published var posts: [Post] = []
+    @Published var unapprovedPosts: [Post] = []
     private var db = Firestore.firestore()
     
     func createPost(title: String, content: String, authorId: String, authorName: String, tags: [String], imageURL: String?, subjectCategory: SubjectCategory, isAdminPost: Bool, completion: @escaping (Bool) -> Void) {
@@ -66,5 +67,21 @@ class PostViewModel: ObservableObject {
                 completion(true)
             }
         }
+    }
+    
+    func fetchUnapprovedPosts() {
+        db.collection("posts")
+            .whereField("isApproved", isEqualTo: false)
+            .order(by: "createdAt", descending: true)
+            .addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching unapproved posts: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
+                
+                self.unapprovedPosts = documents.compactMap { queryDocumentSnapshot -> Post? in
+                    return try? queryDocumentSnapshot.data(as: Post.self)
+                }
+            }
     }
 }

@@ -4,6 +4,7 @@ struct AdminDashboardView: View {
     @ObservedObject var viewModel: AdminDashboardViewModel
     @State private var isShowingUserList = false
     @State private var isShowingCreatePost = false
+    @State private var isShowingUnapprovedPosts = false
 
 
     var body: some View {
@@ -26,6 +27,11 @@ struct AdminDashboardView: View {
                 )
                 .background(
                     NavigationLink(destination: CreatePostView(postViewModel: viewModel.postViewModel), isActive: $isShowingCreatePost) {
+                        EmptyView()
+                    }
+                )
+                .background(
+                    NavigationLink(destination: UnapprovedPostsView(postViewModel: viewModel.postViewModel), isActive: $isShowingUnapprovedPosts) {
                         EmptyView()
                     }
                 )
@@ -64,6 +70,8 @@ struct AdminDashboardView: View {
                             isShowingUserList = true
                         case "Create Post":
                             isShowingCreatePost = true
+                        case "Moderate Posts":
+                            isShowingUnapprovedPosts = true
                         default:
                             print("Tapped on \(action.title)")
                         }

@@ -18,6 +18,8 @@
 		17C5408F2C9AC23B00095530 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C5408E2C9AC23B00095530 /* PostViewModel.swift */; };
 		17C540912C9AC26A00095530 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C540902C9AC26A00095530 /* CreatePostView.swift */; };
 		17C540932C9AC34D00095530 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C540922C9AC34D00095530 /* ImagePicker.swift */; };
+		17C65FBE2C9AE74F00972495 /* UnapprovedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C65FBD2C9AE74F00972495 /* UnapprovedPostsView.swift */; };
+		17C65FC02C9AEB2E00972495 /* UserDashBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C65FBF2C9AEB2E00972495 /* UserDashBoardView.swift */; };
 		17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEA2C97ED6600055429 /* F2LearnApp.swift */; };
 		17F56CED2C97ED6600055429 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEC2C97ED6600055429 /* ContentView.swift */; };
 		17F56CEF2C97ED6800055429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F56CEE2C97ED6800055429 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		17C5408E2C9AC23B00095530 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		17C540902C9AC26A00095530 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		17C540922C9AC34D00095530 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		17C65FBD2C9AE74F00972495 /* UnapprovedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnapprovedPostsView.swift; sourceTree = "<group>"; };
+		17C65FBF2C9AEB2E00972495 /* UserDashBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDashBoardView.swift; sourceTree = "<group>"; };
 		17F56CE72C97ED6600055429 /* F2Learn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F2Learn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F56CEA2C97ED6600055429 /* F2LearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnApp.swift; sourceTree = "<group>"; };
 		17F56CEC2C97ED6600055429 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 				17C185562C997DAA00FFE397 /* UserTestingView.swift */,
 				17C540902C9AC26A00095530 /* CreatePostView.swift */,
 				17C540922C9AC34D00095530 /* ImagePicker.swift */,
+				17C65FBD2C9AE74F00972495 /* UnapprovedPostsView.swift */,
+				17C65FBF2C9AEB2E00972495 /* UserDashBoardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C65FC02C9AEB2E00972495 /* UserDashBoardView.swift in Sources */,
 				17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */,
 				17F56D302C97F5FA00055429 /* SignUpVIew.swift in Sources */,
 				179DBB5D2C9A98C700EEA2DF /* AdminDashBoardModel.swift in Sources */,
@@ -368,6 +375,7 @@
 				17C5408D2C9AC1FF00095530 /* PostModel.swift in Sources */,
 				1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */,
 				17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */,
+				17C65FBE2C9AE74F00972495 /* UnapprovedPostsView.swift in Sources */,
 				17C5408F2C9AC23B00095530 /* PostViewModel.swift in Sources */,
 				17F56D2E2C97F5E100055429 /* LoginView.swift in Sources */,
 				1781C4792C987DC40084AA52 /* UserListView.swift in Sources */,

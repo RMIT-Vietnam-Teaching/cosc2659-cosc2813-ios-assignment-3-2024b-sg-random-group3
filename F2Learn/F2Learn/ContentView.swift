@@ -11,7 +11,7 @@ struct ContentView: View {
                     if authViewModel.currentUser?.role == .admin {
                         AdminDashboardView(viewModel: AdminDashboardViewModel(authViewModel: authViewModel))
                     } else {
-                        UserTestingView()
+                        UserDashboardView()
                     }
                 } else {
                     VStack(spacing: 20) {

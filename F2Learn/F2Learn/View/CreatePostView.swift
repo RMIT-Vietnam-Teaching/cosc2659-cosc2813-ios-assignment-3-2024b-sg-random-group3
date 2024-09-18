@@ -80,7 +80,7 @@ struct CreatePostView: View {
             if success {
                 presentationMode.wrappedValue.dismiss()
             } else {
-                // Show error message
+                print("Create Post Error")
             }
         }
     }
