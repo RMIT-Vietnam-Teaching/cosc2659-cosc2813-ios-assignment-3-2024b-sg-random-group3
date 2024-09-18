@@ -3,29 +3,34 @@ import SwiftUI
 struct AdminDashboardView: View {
     @ObservedObject var viewModel: AdminDashboardViewModel
     @State private var isShowingUserList = false
+    @State private var isShowingCreatePost = false
+
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    welcomeSection
-                    statsSection
-                    quickActionsSection
-                    recentActivitiesSection
+            NavigationView {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        welcomeSection
+                        statsSection
+                        quickActionsSection
+                        recentActivitiesSection
+                    }
+                    .padding()
                 }
-                .padding()
-            }
-            .navigationTitle("Admin Dashboard")
-            .navigationBarItems(trailing: logoutButton)
-            .background(
-                NavigationLink(
-                    destination: UserListView(viewModel: viewModel),
-                    isActive: $isShowingUserList,
-                    label: { EmptyView() }
+                .navigationTitle("Admin Dashboard")
+                .navigationBarItems(trailing: logoutButton)
+                .background(
+                    NavigationLink(destination: UserListView(viewModel: viewModel), isActive: $isShowingUserList) {
+                        EmptyView()
+                    }
                 )
-            )
+                .background(
+                    NavigationLink(destination: CreatePostView(postViewModel: viewModel.postViewModel), isActive: $isShowingCreatePost) {
+                        EmptyView()
+                    }
+                )
+            }
         }
-    }
     
     private var welcomeSection: some View {
         VStack(alignment: .leading) {
@@ -47,24 +52,26 @@ struct AdminDashboardView: View {
     }
     
     private var quickActionsSection: some View {
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Quick Actions")
-                    .font(.headline)
-                
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
-                    ForEach(viewModel.quickActions) { action in
-                        QuickActionButton(action: action) {
-                            if action.title == "Manage Users" {
-                                isShowingUserList = true
-                            } else {
-                                print("Tapped on \(action.title)")
-                            }
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Quick Actions")
+                .font(.headline)
+            
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
+                ForEach(viewModel.quickActions) { action in
+                    QuickActionButton(action: action) {
+                        switch action.title {
+                        case "Manage Users":
+                            isShowingUserList = true
+                        case "Create Post":
+                            isShowingCreatePost = true
+                        default:
+                            print("Tapped on \(action.title)")
                         }
                     }
                 }
             }
         }
-    
+    }
     private var recentActivitiesSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Recent Activities")
