@@ -15,10 +15,12 @@ struct Post: Identifiable, Codable {
     var imageURL: String?
     var isAdminPost: Bool
     var isApproved: Bool
+    var isRejected: Bool = false
     var subjectCategory: SubjectCategory
     
     enum CodingKeys: String, CodingKey {
         case id, title, content, authorId, authorName, createdAt, updatedAt, likes, comments, tags, imageURL, isAdminPost, isApproved, subjectCategory
+        case isRejected
     }
 }
 

@@ -94,4 +94,15 @@ class PostViewModel: ObservableObject {
                 }
             }
     }
+    
+    func getUserAvatar(for userId: String, completion: @escaping (String?) -> Void) {
+        db.collection("users").document(userId).getDocument { (document, error) in
+            if let document = document, document.exists {
+                let avatarURL = document.data()?["avatar"] as? String
+                completion(avatarURL)
+            } else {
+                completion(nil)
+            }
+        }
+    }
 }

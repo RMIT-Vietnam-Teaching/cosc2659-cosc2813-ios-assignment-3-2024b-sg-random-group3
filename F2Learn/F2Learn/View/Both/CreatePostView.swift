@@ -9,9 +9,7 @@ struct CreatePostView: View {
     @State private var content = ""
     @State private var tags = ""
     @State private var selectedCategory: SubjectCategory = .mathematics
-    @State private var showingImagePicker = false
-    @State private var inputImage: UIImage?
-    @State private var image: Image?
+    @State private var showingSuccessAlert = false
     
     var body: some View {
         NavigationView {
@@ -31,18 +29,6 @@ struct CreatePostView: View {
                     }
                 }
                 
-                Section(header: Text("Image")) {
-                    if let image = image {
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    }
-                    
-                    Button("Select Image") {
-                        showingImagePicker = true
-                    }
-                }
-                
                 Section {
                     Button("Create Post") {
                         createPost()
@@ -50,22 +36,20 @@ struct CreatePostView: View {
                 }
             }
             .navigationTitle("Create Post")
-            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                ImagePicker(image: $inputImage)
+            .alert(isPresented: $showingSuccessAlert) {
+                Alert(
+                    title: Text("Success"),
+                    message: Text("Your post has been created successfully."),
+                    dismissButton: .default(Text("OK")) {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                )
             }
         }
     }
     
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
-    }
-    
     func createPost() {
         guard let currentUser = authViewModel.currentUser else { return }
-        
-        // TODO: Implement image upload and get the URL
-        let imageURL: String? = nil
         
         postViewModel.createPost(
             title: title,
@@ -73,13 +57,14 @@ struct CreatePostView: View {
             authorId: currentUser.id,
             authorName: currentUser.fullname,
             tags: tags.split(separator: ",").map { String($0.trimmingCharacters(in: .whitespaces)) },
-            imageURL: imageURL,
+            imageURL: nil,
             subjectCategory: selectedCategory,
             isAdminPost: currentUser.role == .admin
         ) { success in
             if success {
-                presentationMode.wrappedValue.dismiss()
+                showingSuccessAlert = true
             } else {
+                // Handle error
                 print("Create Post Error")
             }
         }

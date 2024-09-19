@@ -2,12 +2,14 @@ import SwiftUI
 
 struct UnapprovedPostsView: View {
     @ObservedObject var postViewModel: PostViewModel
-    @State private var showingAnnouncement = false
-    @State private var announcementMessage = ""
+    @State private var showingConfirmation = false
+    @State private var confirmationMessage = ""
+    @State private var postToApprove: Post?
+    @State private var postToReject: Post?
     
     var body: some View {
         List(postViewModel.unapprovedPosts) { post in
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(post.title)
                     .font(.headline)
                 Text(post.content)
@@ -15,25 +17,55 @@ struct UnapprovedPostsView: View {
                     .lineLimit(2)
                 Text("Author: \(post.authorName)")
                     .font(.caption)
+                Text("Category: \(post.subjectCategory.rawValue)")
+                    .font(.caption)
                 HStack {
-                    Button("Approve") {
-                        approvePost(post)
+                    Button(action: {
+                        postToApprove = post
+                        confirmationMessage = "Are you sure you want to approve this post?"
+                        showingConfirmation = true
+                    }) {
+                        Text("Approve")
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
                     }
-                    .foregroundColor(.green)
                     
-                    Button("Reject") {
-                        rejectPost(post)
+                    Button(action: {
+                        postToReject = post
+                        confirmationMessage = "Are you sure you want to reject this post?"
+                        showingConfirmation = true
+                    }) {
+                        Text("Reject")
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
                     }
-                    .foregroundColor(.red)
                 }
             }
+            .padding(.vertical, 8)
         }
         .navigationTitle("Unapproved Posts")
         .onAppear {
             postViewModel.fetchUnapprovedPosts()
         }
-        .alert(isPresented: $showingAnnouncement) {
-            Alert(title: Text("Announcement"), message: Text(announcementMessage), dismissButton: .default(Text("OK")))
+        .alert(isPresented: $showingConfirmation) {
+            Alert(
+                title: Text("Confirm Action"),
+                message: Text(confirmationMessage),
+                primaryButton: .default(Text("Yes")) {
+                    if let post = postToApprove {
+                        approvePost(post)
+                    } else if let post = postToReject {
+                        rejectPost(post)
+                    }
+                },
+                secondaryButton: .cancel()
+            )
         }
     }
     
@@ -41,12 +73,7 @@ struct UnapprovedPostsView: View {
         guard let postId = post.id else { return }
         postViewModel.approvePost(postId: postId) { success in
             if success {
-                announcementMessage = "Post approved successfully!"
-                showingAnnouncement = true
                 postViewModel.fetchUnapprovedPosts()
-            } else {
-                announcementMessage = "Failed to approve post. Please try again."
-                showingAnnouncement = true
             }
         }
     }
@@ -55,12 +82,7 @@ struct UnapprovedPostsView: View {
         guard let postId = post.id else { return }
         postViewModel.rejectPost(postId: postId) { success in
             if success {
-                announcementMessage = "Post rejected successfully!"
-                showingAnnouncement = true
                 postViewModel.fetchUnapprovedPosts()
-            } else {
-                announcementMessage = "Failed to reject post. Please try again."
-                showingAnnouncement = true
             }
         }
     }
