@@ -32,9 +32,9 @@ struct UserDashboardView: View {
                 .tag(3)
             
             
-            SavedPostsView(postViewModel: postViewModel)
+            UserPostsView(postViewModel: postViewModel)
                 .tabItem {
-                    Label("Saved", systemImage: "bookmark.fill")
+                    Label("My Posts", systemImage: "person.fill")
                 }
                 .tag(4)
 

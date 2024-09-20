@@ -191,6 +191,43 @@ class PostViewModel: ObservableObject {
             }
         }
     }
+    
+    func deletePost(postId: String, completion: @escaping (Bool) -> Void) {
+        db.collection("posts").document(postId).delete { error in
+            if let error = error {
+                print("Error deleting post: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                self.posts.removeAll { $0.id == postId }
+                completion(true)
+            }
+        }
+    }
+
+
+    func updatePost(post: Post, completion: @escaping (Bool) -> Void) {
+        guard let postId = post.id else {
+            completion(false)
+            return
+        }
+
+        do {
+            try db.collection("posts").document(postId).setData(from: post) { error in
+                if let error = error {
+                    print("Error updating post: \(error.localizedDescription)")
+                    completion(false)
+                } else {
+                    if let index = self.posts.firstIndex(where: { $0.id == postId }) {
+                        self.posts[index] = post
+                    }
+                    completion(true)
+                }
+            }
+        } catch {
+            print("Error encoding post: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
 }
 
 extension Comment {
