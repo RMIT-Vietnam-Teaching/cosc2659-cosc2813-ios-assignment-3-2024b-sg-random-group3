@@ -84,6 +84,7 @@ struct AdminPostCard: View {
                     likePost()
                 }) {
                     Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                        .foregroundColor(.red)
                 }
                 .foregroundColor(.secondary)
                 
@@ -175,6 +176,7 @@ struct AdminPostDetailView: View {
                         likePost()
                     }) {
                         Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                            .foregroundColor(.red)
                     }
                     .foregroundColor(.secondary)
                     

@@ -12,6 +12,7 @@
 		1714C8442C9D7C93001AE933 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714C8432C9D7C8D001AE933 /* SplashScreenView.swift */; };
 		1714C8462C9D7F55001AE933 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714C8452C9D7F53001AE933 /* WelcomeView.swift */; };
 		1714C8482C9D86BB001AE933 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714C8472C9D86B1001AE933 /* TextView.swift */; };
+		1780210E2C9DD1FC00F02FEF /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1780210D2C9DD1F700F02FEF /* ExploreView.swift */; };
 		1781C4792C987DC40084AA52 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C4782C987DC40084AA52 /* UserListView.swift */; };
 		1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C47A2C987DF70084AA52 /* UserDetailView.swift */; };
 		1788907A2C9D2ADB00C1D19F /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */; };
@@ -71,6 +72,7 @@
 		1714C8432C9D7C8D001AE933 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		1714C8452C9D7F53001AE933 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		1714C8472C9D86B1001AE933 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		1780210D2C9DD1F700F02FEF /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		1781C4782C987DC40084AA52 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1781C47A2C987DF70084AA52 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		17C65FC32C9B1FA400972495 /* Both */ = {
 			isa = PBXGroup;
 			children = (
+				1780210D2C9DD1F700F02FEF /* ExploreView.swift */,
 				1714C8472C9D86B1001AE933 /* TextView.swift */,
 				1714C8452C9D7F53001AE933 /* WelcomeView.swift */,
 				1714C8432C9D7C8D001AE933 /* SplashScreenView.swift */,
@@ -426,6 +429,7 @@
 			files = (
 				17C65FC02C9AEB2E00972495 /* UserDashBoardView.swift in Sources */,
 				17C65FCC2C9B340900972495 /* SavePostsView.swift in Sources */,
+				1780210E2C9DD1FC00F02FEF /* ExploreView.swift in Sources */,
 				17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */,
 				17C65FCA2C9B33F200972495 /* AllPostView.swift in Sources */,
 				17F56D302C97F5FA00055429 /* SignUpVIew.swift in Sources */,

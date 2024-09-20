@@ -25,17 +25,19 @@ struct UserDashboardView: View {
                 }
                 .tag(2)
             
+            
+            ExploreView(postViewModel: postViewModel)
+                .tabItem {
+                    Label("Explore", systemImage: "magnifyingglass")
+                }
+                .tag(3)
+            
             SavedPostsView(postViewModel: postViewModel)
                 .tabItem {
                     Label("Saved", systemImage: "bookmark.fill")
                 }
-                .tag(3)
-            
-//            UserPostsView(postViewModel: postViewModel)
-//                .tabItem {
-//                    Label("My Posts", systemImage: "person.fill")
-//                }
-//                .tag(4)
+                .tag(4)
+
 //            
 //            SettingsView()
 //                .tabItem {

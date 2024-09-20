@@ -58,6 +58,7 @@ struct PostRow: View {
                     likePost()
                 }) {
                     Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                        .foregroundColor(.red)
                 }
                 Label("\(post.comments.count)", systemImage: "bubble.left")
                 Spacer()
