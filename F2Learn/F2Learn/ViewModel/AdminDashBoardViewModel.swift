@@ -184,6 +184,7 @@ class AdminDashboardViewModel: ObservableObject {
                 createdAt: Date(),
                 updatedAt: Date(),
                 likes: 0,
+                likedBy:[],
                 comments: [],
                 tags: tags,
                 imageURL: imageURL,

@@ -10,6 +10,7 @@ struct Post: Identifiable, Codable {
     var createdAt: Date
     var updatedAt: Date
     var likes: Int
+    var likedBy: [String]
     var comments: [Comment]
     var tags: [String]
     var imageURL: String?
@@ -19,11 +20,10 @@ struct Post: Identifiable, Codable {
     var subjectCategory: SubjectCategory
     
     enum CodingKeys: String, CodingKey {
-        case id, title, content, authorId, authorName, createdAt, updatedAt, likes, comments, tags, imageURL, isAdminPost, isApproved, subjectCategory
+        case id, title, content, authorId, authorName, createdAt, updatedAt, likes, likedBy, comments, tags, imageURL, isAdminPost, isApproved, subjectCategory
         case isRejected
     }
 }
-
 struct Comment: Identifiable, Codable {
     var id: String
     var authorId: String

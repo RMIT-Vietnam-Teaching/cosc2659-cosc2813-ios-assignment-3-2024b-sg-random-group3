@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AllPostsView: View {
     @ObservedObject var postViewModel: PostViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var selectedPost: Post?
     @State private var showingPostDetail = false
     
@@ -30,6 +31,7 @@ struct AllPostsView: View {
 struct PostRow: View {
     let post: Post
     @ObservedObject var postViewModel: PostViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var authorAvatarURL: String?
     
     var body: some View {
@@ -52,7 +54,11 @@ struct PostRow: View {
                 .lineLimit(3)
             
             HStack {
-                Label("\(post.likes)", systemImage: "heart")
+                Button(action: {
+                    likePost()
+                }) {
+                    Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                }
                 Label("\(post.comments.count)", systemImage: "bubble.left")
                 Spacer()
                 Text(post.subjectCategory.rawValue)
@@ -70,11 +76,21 @@ struct PostRow: View {
             }
         }
     }
+    
+    private func likePost() {
+        guard let userId = authViewModel.currentUser?.id, let postId = post.id else { return }
+        postViewModel.likePost(postId: postId, userId: userId) { success in
+            if success {
+                // The post is already updated in the list by the ViewModel
+            }
+        }
+    }
 }
 
 struct PostDetailView: View {
-    let post: Post
+    @State var post: Post
     @ObservedObject var postViewModel: PostViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var newComment = ""
     @State private var authorAvatarURL: String?
     
@@ -100,9 +116,9 @@ struct PostDetailView: View {
                 
                 HStack {
                     Button(action: {
-                        // Implement like functionality
+                        likePost()
                     }) {
-                        Label("\(post.likes)", systemImage: "heart")
+                        Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
                     }
                     Spacer()
                     Text(post.subjectCategory.rawValue)
@@ -124,7 +140,7 @@ struct PostDetailView: View {
                 HStack {
                     TextField("Add a comment", text: $newComment)
                     Button("Post") {
-                        // Implement add comment functionality
+                        addComment()
                     }
                 }
             }
@@ -134,6 +150,39 @@ struct PostDetailView: View {
         .onAppear {
             postViewModel.getUserAvatar(for: post.authorId) { avatarURL in
                 self.authorAvatarURL = avatarURL
+            }
+        }
+    }
+    
+    private func likePost() {
+        guard let userId = authViewModel.currentUser?.id, let postId = post.id else { return }
+        postViewModel.likePost(postId: postId, userId: userId) { success in
+            if success {
+                if let updatedPost = postViewModel.posts.first(where: { $0.id == post.id }) {
+                    post = updatedPost
+                }
+            }
+        }
+    }
+    
+    private func addComment() {
+        guard let userId = authViewModel.currentUser?.id,
+              let userName = authViewModel.currentUser?.fullname,
+              let postId = post.id,
+              !newComment.isEmpty else { return }
+        
+        let comment = Comment(id: UUID().uuidString,
+                              authorId: userId,
+                              authorName: userName,
+                              content: newComment,
+                              createdAt: Date())
+        
+        postViewModel.addComment(to: postId, comment: comment) { success in
+            if success {
+                if let updatedPost = postViewModel.posts.first(where: { $0.id == post.id }) {
+                    post = updatedPost
+                }
+                newComment = ""
             }
         }
     }

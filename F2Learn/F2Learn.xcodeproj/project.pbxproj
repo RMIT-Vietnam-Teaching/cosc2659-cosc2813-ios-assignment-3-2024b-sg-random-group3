@@ -163,7 +163,6 @@
 			children = (
 				17C65FBF2C9AEB2E00972495 /* UserDashBoardView.swift */,
 				17C185562C997DAA00FFE397 /* UserTestingView.swift */,
-				17C65FC92C9B33F200972495 /* AllPostView.swift */,
 				17C65FCB2C9B340900972495 /* SavePostsView.swift */,
 			);
 			path = User;
@@ -172,12 +171,13 @@
 		17C65FC32C9B1FA400972495 /* Both */ = {
 			isa = PBXGroup;
 			children = (
-				178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */,
-				17C540922C9AC34D00095530 /* ImagePicker.swift */,
-				17C540902C9AC26A00095530 /* CreatePostView.swift */,
-				17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */,
 				17F56D2D2C97F5E100055429 /* LoginView.swift */,
+				17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */,
+				178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */,
+				17C540902C9AC26A00095530 /* CreatePostView.swift */,
+				17C540922C9AC34D00095530 /* ImagePicker.swift */,
 				17C65FC42C9B212200972495 /* AdminPostView.swift */,
+				17C65FC92C9B33F200972495 /* AllPostView.swift */,
 			);
 			path = Both;
 			sourceTree = "<group>";
