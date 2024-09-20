@@ -19,7 +19,7 @@ struct ContentView: View {
                             Text("Login")
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.blue)
+                                .background(Color.customAccent)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }

@@ -11,6 +11,8 @@
 		170FF0A72C9821CA004118C8 /* AdminDashBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FF0A62C9821CA004118C8 /* AdminDashBoardViewModel.swift */; };
 		1781C4792C987DC40084AA52 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C4782C987DC40084AA52 /* UserListView.swift */; };
 		1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C47A2C987DF70084AA52 /* UserDetailView.swift */; };
+		1788907A2C9D2ADB00C1D19F /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */; };
+		1788907D2C9D2CC800C1D19F /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1788907C2C9D2CC800C1D19F /* ColorScheme.swift */; };
 		179DBB5B2C9A98A500EEA2DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB5A2C9A98A500EEA2DF /* User.swift */; };
 		179DBB5D2C9A98C700EEA2DF /* AdminDashBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */; };
 		17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C185562C997DAA00FFE397 /* UserTestingView.swift */; };
@@ -65,6 +67,8 @@
 		170FF0A62C9821CA004118C8 /* AdminDashBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashBoardViewModel.swift; sourceTree = "<group>"; };
 		1781C4782C987DC40084AA52 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1781C47A2C987DF70084AA52 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		1788907C2C9D2CC800C1D19F /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		179DBB5A2C9A98A500EEA2DF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashBoardModel.swift; sourceTree = "<group>"; };
 		17C185562C997DAA00FFE397 /* UserTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTestingView.swift; sourceTree = "<group>"; };
@@ -125,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1788907B2C9D2CB600C1D19F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1788907C2C9D2CC800C1D19F /* ColorScheme.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		179DBB592C9A989600EEA2DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +172,7 @@
 		17C65FC32C9B1FA400972495 /* Both */ = {
 			isa = PBXGroup;
 			children = (
+				178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */,
 				17C540922C9AC34D00095530 /* ImagePicker.swift */,
 				17C540902C9AC26A00095530 /* CreatePostView.swift */,
 				17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */,
@@ -252,6 +265,7 @@
 		17F56D2C2C97F5D300055429 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1788907B2C9D2CB600C1D19F /* Extensions */,
 				17C65FC32C9B1FA400972495 /* Both */,
 				17C65FC22C9B1D8400972495 /* User */,
 				17C65FC12C9B1B2D00972495 /* Admin */,
@@ -414,10 +428,12 @@
 				1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */,
 				17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */,
 				17C65FBE2C9AE74F00972495 /* UnapprovedPostsView.swift in Sources */,
+				1788907A2C9D2ADB00C1D19F /* ForgotPasswordView.swift in Sources */,
 				17C5408F2C9AC23B00095530 /* PostViewModel.swift in Sources */,
 				17F56D2E2C97F5E100055429 /* LoginView.swift in Sources */,
 				1781C4792C987DC40084AA52 /* UserListView.swift in Sources */,
 				17C65FC82C9B2BE200972495 /* UserDashBoardViewModel.swift in Sources */,
+				1788907D2C9D2CC800C1D19F /* ColorScheme.swift in Sources */,
 				170FF0A52C981BEE004118C8 /* AdminDashBoardView.swift in Sources */,
 				17C540932C9AC34D00095530 /* ImagePicker.swift in Sources */,
 				170FF0A72C9821CA004118C8 /* AdminDashBoardViewModel.swift in Sources */,
