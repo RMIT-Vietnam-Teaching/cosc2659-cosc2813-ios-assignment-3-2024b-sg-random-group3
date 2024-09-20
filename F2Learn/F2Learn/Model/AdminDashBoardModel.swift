@@ -20,7 +20,7 @@ struct RecentActivity: Identifiable {
     let description: String
     let time: String
 }
-
+ 
 extension Date {
     func timeAgoDisplay() -> String {
         let formatter = RelativeDateTimeFormatter()
