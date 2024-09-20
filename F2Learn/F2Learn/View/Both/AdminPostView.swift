@@ -2,15 +2,18 @@ import SwiftUI
 
 struct AdminPostsView: View {
     @ObservedObject var postViewModel: PostViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var selectedPost: Post?
+    @State private var showingPostDetail = false
     
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(postViewModel.posts.filter { $0.isAdminPost }) { post in
-                    AdminPostCard(post: post)
+                    AdminPostCard(post: post, postViewModel: postViewModel)
                         .onTapGesture {
                             selectedPost = post
+                            showingPostDetail = true
                         }
                 }
             }
@@ -20,24 +23,24 @@ struct AdminPostsView: View {
         .onAppear {
             postViewModel.fetchPosts(isAdmin: true)
         }
-        .sheet(item: $selectedPost) { post in
-            AdminPostDetailView(post: post)
+        .sheet(isPresented: $showingPostDetail) {
+            if let post = selectedPost {
+                AdminPostDetailView(post: post, postViewModel: postViewModel)
+            }
         }
     }
 }
 
 struct AdminPostCard: View {
     let post: Post
+    @ObservedObject var postViewModel: PostViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var authorAvatarURL: String?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
-                    .foregroundColor(.blue)
-                
+                UserAvatar(url: authorAvatarURL)
                 VStack(alignment: .leading) {
                     Text(post.authorName)
                         .font(.headline)
@@ -77,8 +80,12 @@ struct AdminPostCard: View {
             }
             
             HStack {
-                Label("\(post.likes)", systemImage: "heart")
-                    .foregroundColor(.secondary)
+                Button(action: {
+                    likePost()
+                }) {
+                    Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                }
+                .foregroundColor(.secondary)
                 
                 Spacer()
                 
@@ -99,22 +106,35 @@ struct AdminPostCard: View {
         .background(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .onAppear {
+            postViewModel.getUserAvatar(for: post.authorId) { avatarURL in
+                self.authorAvatarURL = avatarURL
+            }
+        }
+    }
+    
+    private func likePost() {
+        guard let userId = authViewModel.currentUser?.id, let postId = post.id else { return }
+        postViewModel.likePost(postId: postId, userId: userId) { success in
+            if success {
+                // The post is already updated in the list by the ViewModel
+            }
+        }
     }
 }
 
 struct AdminPostDetailView: View {
-    let post: Post
+    @State var post: Post
+    @ObservedObject var postViewModel: PostViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var newComment = ""
+    @State private var authorAvatarURL: String?
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 HStack {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .foregroundColor(.blue)
-                    
+                    UserAvatar(url: authorAvatarURL)
                     VStack(alignment: .leading) {
                         Text(post.authorName)
                             .font(.headline)
@@ -151,8 +171,12 @@ struct AdminPostDetailView: View {
                 }
                 
                 HStack {
-                    Label("\(post.likes)", systemImage: "heart")
-                        .foregroundColor(.secondary)
+                    Button(action: {
+                        likePost()
+                    }) {
+                        Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                    }
+                    .foregroundColor(.secondary)
                     
                     Spacer()
                     
@@ -177,10 +201,55 @@ struct AdminPostDetailView: View {
                 ForEach(post.comments) { comment in
                     CommentView(comment: comment)
                 }
+                
+                HStack {
+                    TextField("Add a comment", text: $newComment)
+                    Button("Post") {
+                        addComment()
+                    }
+                }
             }
             .padding()
         }
         .navigationTitle("Post Details")
+        .onAppear {
+            postViewModel.getUserAvatar(for: post.authorId) { avatarURL in
+                self.authorAvatarURL = avatarURL
+            }
+        }
+    }
+    
+    private func likePost() {
+        guard let userId = authViewModel.currentUser?.id, let postId = post.id else { return }
+        postViewModel.likePost(postId: postId, userId: userId) { success in
+            if success {
+                if let updatedPost = postViewModel.posts.first(where: { $0.id == post.id }) {
+                    post = updatedPost
+                }
+            }
+        }
+    }
+    
+    private func addComment() {
+        guard let userId = authViewModel.currentUser?.id,
+              let userName = authViewModel.currentUser?.fullname,
+              let postId = post.id,
+              !newComment.isEmpty else { return }
+        
+        let comment = Comment(id: UUID().uuidString,
+                              authorId: userId,
+                              authorName: userName,
+                              content: newComment,
+                              createdAt: Date())
+        
+        postViewModel.addComment(to: postId, comment: comment) { success in
+            if success {
+                if let updatedPost = postViewModel.posts.first(where: { $0.id == post.id }) {
+                    post = updatedPost
+                }
+                newComment = ""
+            }
+        }
     }
 }
 

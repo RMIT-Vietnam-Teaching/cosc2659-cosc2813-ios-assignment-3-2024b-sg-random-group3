@@ -1,13 +1,9 @@
 import SwiftUI
 
-struct LoginView: View {
+struct WelcomeView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @State private var email = ""
-    @State private var password = ""
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-    @State private var isShowingForgotPassword = false
-    @Environment(\.presentationMode) var presentationMode
+    @State private var isShowingLogin = false
+    @State private var isShowingSignup = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -30,11 +26,16 @@ struct LoginView: View {
                             .font(.system(size: min(geometry.size.width * 0.1, 40), weight: .bold, design: .rounded))
                             .foregroundColor(.white)
                         
+                        Text("Empowering Education in Vietnam")
+                            .font(.system(size: min(geometry.size.width * 0.04, 18), weight: .medium, design: .rounded))
+                            .foregroundColor(.white.opacity(0.8))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                        
+                        Spacer(minLength: 30)
+                        
                         VStack(spacing: 20) {
-                            CustomTextField(text: $email, placeholder: "Email", icon: "envelope")
-                            CustomSecureField(text: $password, placeholder: "Password", icon: "lock")
-                            
-                            Button(action: login) {
+                            Button(action: { isShowingLogin = true }) {
                                 Text("Log In")
                                     .frame(maxWidth: .infinity)
                                     .padding()
@@ -45,27 +46,20 @@ struct LoginView: View {
                                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                             }
                             
-                            Button(action: { isShowingForgotPassword = true }) {
-                                Text("Forgot Password?")
+                            Button(action: { isShowingSignup = true }) {
+                                Text("Sign Up")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.customAccent)
                                     .foregroundColor(.white)
-                                    .font(.subheadline)
+                                    .font(.headline)
+                                    .cornerRadius(10)
+                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                             }
                         }
                         .padding(.horizontal)
                         
-                        HStack {
-                            Text("Don't have an account?")
-                                .foregroundColor(.white)
-                            Button(action: {
-                                presentationMode.wrappedValue.dismiss()
-                            }) {
-                                Text("Sign Up")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                        
-                        Spacer()
+                        Spacer(minLength: 30)
                     }
                     .padding(.top, geometry.safeAreaInsets.top + 20)
                     .padding(.bottom, geometry.safeAreaInsets.bottom + 20)
@@ -73,22 +67,11 @@ struct LoginView: View {
                 }
             }
         }
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Log In"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        .fullScreenCover(isPresented: $isShowingLogin) {
+            LoginView()
         }
-        .sheet(isPresented: $isShowingForgotPassword) {
-            ForgotPasswordView()
-        }
-    }
-    
-    private func login() {
-        authViewModel.signIn(email: email, password: password) { success, error in
-            if success {
-                presentationMode.wrappedValue.dismiss()
-            } else {
-                alertMessage = error ?? "An unknown error occurred"
-                showAlert = true
-            }
+        .fullScreenCover(isPresented: $isShowingSignup) {
+            SignUpView()
         }
     }
 }
