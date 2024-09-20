@@ -6,117 +6,81 @@ struct LoginView: View {
     @State private var password = ""
     @State private var showAlert = false
     @State private var alertMessage = ""
-    @State private var isLoading = false
-    @State private var showForgotPassword = false
-    @Environment(\.colorScheme) var colorScheme
+    @State private var isShowingForgotPassword = false
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color.customBackground.edgesIgnoringSafeArea(.all)
+                // Background gradient
+                LinearGradient(gradient: Gradient(colors: [Color.customPrimary, Color.customSecondary]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .edgesIgnoringSafeArea(.all)
                 
                 ScrollView {
-                    VStack(spacing: 25) {
-                        logoImage
-                        welcomeText
-                        emailField
-                        passwordField
-                        loginButton
-                        forgotPasswordButton
-                        signUpLink
+                    VStack(spacing: 30) {
+                        // Logo
+                        Image("F2Learn")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: min(geometry.size.width * 0.4, 150), height: min(geometry.size.width * 0.4, 150))
+                            .background(Circle().fill(Color.white).shadow(radius: 10))
+                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                        
+                        Text("F2Learn")
+                            .font(.system(size: min(geometry.size.width * 0.1, 40), weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                        
+                        VStack(spacing: 20) {
+                            CustomTextField(text: $email, placeholder: "Email", icon: "envelope")
+                            CustomSecureField(text: $password, placeholder: "Password", icon: "lock")
+                            
+                            Button(action: login) {
+                                Text("Log In")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.white)
+                                    .foregroundColor(Color.customPrimary)
+                                    .font(.headline)
+                                    .cornerRadius(10)
+                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                            }
+                            
+                            Button(action: { isShowingForgotPassword = true }) {
+                                Text("Forgot Password?")
+                                    .foregroundColor(.white)
+                                    .font(.subheadline)
+                            }
+                        }
+                        .padding(.horizontal)
+                        
+                        HStack {
+                            Text("Don't have an account?")
+                                .foregroundColor(.white)
+                            NavigationLink(destination: SignUpView()) {
+                                Text("Sign Up")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        
+                        Spacer()
                     }
-                    .padding(.horizontal, 30)
-                    .frame(minHeight: geometry.size.height)
+                    .padding(.top, geometry.safeAreaInsets.top + 20)
+                    .padding(.bottom, geometry.safeAreaInsets.bottom + 20)
+                    .padding(.horizontal)
                 }
             }
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Login"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Log In"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
-        .sheet(isPresented: $showForgotPassword) {
+        .sheet(isPresented: $isShowingForgotPassword) {
             ForgotPasswordView()
         }
     }
     
-    private var logoImage: some View {
-        Image(systemName: "person.circle.fill")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 100, height: 100)
-            .foregroundColor(.customPrimary)
-    }
-    
-    private var welcomeText: some View {
-        Text("Welcome Back!")
-            .font(.largeTitle)
-            .fontWeight(.bold)
-            .foregroundColor(.customTextPrimary)
-    }
-    
-    private var emailField: some View {
-        TextField("Email", text: $email)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .autocapitalization(.none)
-            .keyboardType(.emailAddress)
-            .padding()
-            .background(Color.customBackground)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.customPrimary, lineWidth: 1)
-            )
-    }
-    
-    private var passwordField: some View {
-        SecureField("Password", text: $password)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
-            .background(Color.customBackground)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.customPrimary, lineWidth: 1)
-            )
-    }
-    
-    private var loginButton: some View {
-        Button(action: login) {
-            Group {
-                if isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                } else {
-                    Text("Log In")
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.customPrimary)
-            .foregroundColor(.white)
-            .cornerRadius(10)
-        }
-        .disabled(isLoading)
-    }
-    
-    private var forgotPasswordButton: some View {
-        Button(action: { showForgotPassword = true }) {
-            Text("Forgot Password?")
-                .foregroundColor(.customPrimary)
-        }
-    }
-    
-    private var signUpLink: some View {
-        NavigationLink(destination: SignUpView()) {
-            Text("Don't have an account? Sign Up")
-                .foregroundColor(.customPrimary)
-        }
-    }
-    
     private func login() {
-        isLoading = true
         authViewModel.signIn(email: email, password: password) { success, error in
-            isLoading = false
             if success {
                 presentationMode.wrappedValue.dismiss()
             } else {
@@ -124,5 +88,44 @@ struct LoginView: View {
                 showAlert = true
             }
         }
+    }
+}
+
+struct CustomTextField: View {
+    @Binding var text: String
+    var placeholder: String
+    var icon: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .foregroundColor(.white)
+                .frame(width: 20)
+            TextField(placeholder, text: $text)
+                .foregroundColor(.white)
+                .autocapitalization(.none)
+        }
+        .padding()
+        .background(Color.white.opacity(0.2))
+        .cornerRadius(10)
+    }
+}
+
+struct CustomSecureField: View {
+    @Binding var text: String
+    var placeholder: String
+    var icon: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .foregroundColor(.white)
+                .frame(width: 20)
+            SecureField(placeholder, text: $text)
+                .foregroundColor(.white)
+        }
+        .padding()
+        .background(Color.white.opacity(0.2))
+        .cornerRadius(10)
     }
 }
