@@ -1,47 +1,91 @@
-//LoginView.swift
 import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @State private var email = ""
     @State private var password = ""
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(spacing: 20) {
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-                .keyboardType(.emailAddress)
+            Spacer()
+
+            Text("Login")
+                .font(.largeTitle)
+                .fontWeight(.bold)
             
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Text("Welcome back to the app")
+                .font(.subheadline)
+                .foregroundColor(.gray)
             
-            Button(action: login) {
-                Text("Log In")
-                    .frame(maxWidth: .infinity)
-                    .padding()
+            VStack(alignment: .leading, spacing: 15) {
+                InputView(text: $email, title: "Email Address", placeholder: "hello@example.com")
+                
+                InputView(text: $password, title: "Password", placeholder: "Enter your password", isSecureField: true)
+
+                HStack {
+                    Spacer()
+                    Text("Forgot Password?")
+                        .font(.subheadline)
+                        .foregroundColor(Color.blue)
+                        .onTapGesture {
+                            // Forgot password action
+                        }
+                }
+                
+                Toggle(isOn: .constant(true)) {
+                    Text("Keep me signed in")
+                }
+                .toggleStyle(SwitchToggleStyle(tint: Color.blue))
+            }
+            .padding(.horizontal, 40)
+
+            Button(action: {
+                // Login action
+            }) {
+                Text("Login")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, minHeight: 50)
                     .background(Color.blue)
                     .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .cornerRadius(25)
+                    .padding(.horizontal, 40)
             }
+            
+            Text("or sign in with")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            
+            Button(action: {
+                // Social login action
+            }) {
+                HStack {
+                    Image(systemName: "globe") // Replace with Google icon
+                    Text("Continue with Google")
+                        .font(.headline)
+                }
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .background(Color.gray.opacity(0.2))
+                .foregroundColor(.black)
+                .cornerRadius(25)
+                .padding(.horizontal, 40)
+            }
+
+            NavigationLink(destination: SignUpView()) {
+                Text("Create an account")
+                    .font(.subheadline)
+                    .foregroundColor(Color.blue)
+            }
+            .padding(.top, 10)
+            
+            Spacer()
         }
         .padding()
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Log In"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-        }
+        .background(Color.white.edgesIgnoringSafeArea(.all))
     }
-    
-    private func login() {
-        authViewModel.signIn(email: email, password: password) { success, error in
-            if success {
-                presentationMode.wrappedValue.dismiss()
-            } else {
-                alertMessage = error ?? "An unknown error occurred"
-                showAlert = true
-            }
-        }
+}
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView()
+            .environmentObject(AuthViewModel())
     }
 }

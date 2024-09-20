@@ -31,6 +31,7 @@
 		17F56D2B2C97F5BB00055429 /* AuthVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2A2C97F5BB00055429 /* AuthVIewModel.swift */; };
 		17F56D2E2C97F5E100055429 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2D2C97F5E100055429 /* LoginView.swift */; };
 		17F56D302C97F5FA00055429 /* SignUpVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */; };
+		388727F92C9D72540095DC3E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388727F82C9D72540095DC3E /* InputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		17F56D2A2C97F5BB00055429 /* AuthVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVIewModel.swift; sourceTree = "<group>"; };
 		17F56D2D2C97F5E100055429 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVIew.swift; sourceTree = "<group>"; };
+		388727F82C9D72540095DC3E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputView.swift; path = "../../../../../../.Trash/cosc2659-cosc2813-ios-assignment-3-2024b-sg-random-group3 16.04.06/F2Learn/F2Learn/View/InputView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				1781C4782C987DC40084AA52 /* UserListView.swift */,
 				1781C47A2C987DF70084AA52 /* UserDetailView.swift */,
 				17C185562C997DAA00FFE397 /* UserTestingView.swift */,
+				388727F82C9D72540095DC3E /* InputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				388727F92C9D72540095DC3E /* InputView.swift in Sources */,
 				17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */,
 				17F56D302C97F5FA00055429 /* SignUpVIew.swift in Sources */,
 				179DBB5D2C9A98C700EEA2DF /* AdminDashBoardModel.swift in Sources */,

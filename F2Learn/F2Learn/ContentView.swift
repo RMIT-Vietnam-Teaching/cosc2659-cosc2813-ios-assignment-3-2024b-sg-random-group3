@@ -6,37 +6,47 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            Group {
-                if authViewModel.isAuthenticated {
-                    if authViewModel.currentUser?.role == .admin {
-                        AdminDashboardView(viewModel: AdminDashboardViewModel(authViewModel: authViewModel))
-                    } else {
-                        UserTestingView()
-                    }
-                } else {
-                    VStack(spacing: 20) {
-                        NavigationLink(destination: LoginView()) {
-                            Text("Login")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                        
-                        NavigationLink(destination: SignUpView()) {
-                            Text("Sign Up")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.green)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                    }
-                    .padding()
-                    .navigationTitle("Welcome")
+            VStack {
+                Spacer() // Center the content vertically
+
+                Image("applogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+
+                Text("Welcome to the app")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top)
+
+                Text("We're excited to help you book and manage your service appointments with ease.")
+                    .font(.subheadline)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+
+                Spacer()
+
+                NavigationLink(destination: LoginView()) {
+                    Text("Login")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, minHeight: 50)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .padding(.horizontal, 40)
                 }
+                
+                NavigationLink(destination: SignUpView()) {
+                    Text("Create an account")
+                        .font(.subheadline)
+                        .foregroundColor(Color.blue)
+                        .padding(.top, 10)
+                }
+
+                Spacer()
             }
+            .padding()
+            .background(Color.white.edgesIgnoringSafeArea(.all)) // White background
         }
     }
 }
