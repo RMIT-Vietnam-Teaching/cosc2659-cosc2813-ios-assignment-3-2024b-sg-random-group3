@@ -20,7 +20,7 @@ struct WelcomeView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: min(geometry.size.width * 0.4, 150), height: min(geometry.size.width * 0.4, 150))
                             .background(Circle().fill(Color.white).shadow(radius: 10))
-                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
                         
                         Text("F2Learn")
                             .font(.system(size: min(geometry.size.width * 0.1, 40), weight: .bold, design: .rounded))
