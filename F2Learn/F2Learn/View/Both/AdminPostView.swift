@@ -8,17 +8,25 @@ struct AdminPostsView: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 16) {
+            LazyVStack(spacing: 0) {
                 ForEach(postViewModel.posts.filter { $0.isAdminPost }) { post in
-                    AdminPostCard(post: post, postViewModel: postViewModel)
-                        .onTapGesture {
-                            selectedPost = post
-                            showingPostDetail = true
-                        }
+                    VStack(spacing: 0) {
+                        AdminPostCard(post: post, postViewModel: postViewModel)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(Color.customBackground)
+                            .onTapGesture {
+                                selectedPost = post
+                                showingPostDetail = true
+                            }
+                        
+                        Divider()
+                            .background(Color.customSecondary.opacity(0.5))
+                    }
                 }
             }
-            .padding()
         }
+        .background(Color.customBackground)
         .navigationTitle("Admin Posts")
         .onAppear {
             postViewModel.fetchPosts(isAdmin: true)
@@ -44,24 +52,27 @@ struct AdminPostCard: View {
                 VStack(alignment: .leading) {
                     Text(post.authorName)
                         .font(.headline)
+                        .foregroundColor(.customTextPrimary)
                     Text(post.createdAt, style: .date)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                        .foregroundColor(.customTextSecondary)
                 }
                 
                 Spacer()
                 
                 Image(systemName: "checkmark.seal.fill")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.customPrimary)
             }
             
             Text(post.title)
                 .font(.title3)
                 .fontWeight(.bold)
+                .foregroundColor(.customTextPrimary)
             
             Text(post.content)
                 .lineLimit(3)
                 .font(.body)
+                .foregroundColor(.customTextPrimary)
             
             if let imageURL = post.imageURL {
                 AsyncImage(url: URL(string: imageURL)) { image in
@@ -73,7 +84,7 @@ struct AdminPostCard: View {
                         .cornerRadius(8)
                 } placeholder: {
                     Rectangle()
-                        .fill(Color.gray.opacity(0.3))
+                        .fill(Color.customSecondary.opacity(0.3))
                         .frame(height: 200)
                         .cornerRadius(8)
                 }
@@ -84,26 +95,26 @@ struct AdminPostCard: View {
                     likePost()
                 }) {
                     Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                        .foregroundColor(.red)
                 }
-                .foregroundColor(.secondary)
                 
                 Spacer()
                 
                 Label("\(post.comments.count)", systemImage: "bubble.right")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.customTextSecondary)
                 
                 Spacer()
                 
                 Text(post.subjectCategory.rawValue)
                     .font(.caption)
                     .padding(6)
-                    .background(Color.blue.opacity(0.1))
-                    .foregroundColor(.blue)
+                    .background(Color.customPrimary.opacity(0.1))
+                    .foregroundColor(.customPrimary)
                     .cornerRadius(12)
             }
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color.customBackground)
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
         .onAppear {
@@ -138,23 +149,26 @@ struct AdminPostDetailView: View {
                     VStack(alignment: .leading) {
                         Text(post.authorName)
                             .font(.headline)
+                            .foregroundColor(.customTextPrimary)
                         Text(post.createdAt, style: .date)
                             .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.customTextSecondary)
                     }
                     
                     Spacer()
                     
                     Image(systemName: "checkmark.seal.fill")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.customPrimary)
                 }
                 
                 Text(post.title)
                     .font(.title)
                     .fontWeight(.bold)
+                    .foregroundColor(.customTextPrimary)
                 
                 Text(post.content)
                     .font(.body)
+                    .foregroundColor(.customTextPrimary)
                 
                 if let imageURL = post.imageURL {
                     AsyncImage(url: URL(string: imageURL)) { image in
@@ -164,7 +178,7 @@ struct AdminPostDetailView: View {
                             .cornerRadius(8)
                     } placeholder: {
                         Rectangle()
-                            .fill(Color.gray.opacity(0.3))
+                            .fill(Color.customSecondary.opacity(0.3))
                             .aspectRatio(16/9, contentMode: .fit)
                             .cornerRadius(8)
                     }
@@ -175,28 +189,30 @@ struct AdminPostDetailView: View {
                         likePost()
                     }) {
                         Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                            .foregroundColor(.red)
                     }
-                    .foregroundColor(.secondary)
                     
                     Spacer()
                     
                     Label("\(post.comments.count)", systemImage: "bubble.right")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.customTextSecondary)
                     
                     Spacer()
                     
                     Text(post.subjectCategory.rawValue)
                         .font(.caption)
                         .padding(6)
-                        .background(Color.blue.opacity(0.1))
-                        .foregroundColor(.blue)
+                        .background(Color.customPrimary.opacity(0.1))
+                        .foregroundColor(.customPrimary)
                         .cornerRadius(12)
                 }
                 
                 Divider()
+                    .background(Color.customSecondary)
                 
                 Text("Comments")
                     .font(.headline)
+                    .foregroundColor(.customTextPrimary)
                 
                 ForEach(post.comments) { comment in
                     CommentView(comment: comment)
@@ -204,13 +220,17 @@ struct AdminPostDetailView: View {
                 
                 HStack {
                     TextField("Add a comment", text: $newComment)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .foregroundColor(.customTextPrimary)
                     Button("Post") {
                         addComment()
                     }
+                    .foregroundColor(.customPrimary)
                 }
             }
             .padding()
         }
+        .background(Color.customBackground)
         .navigationTitle("Post Details")
         .onAppear {
             postViewModel.getUserAvatar(for: post.authorId) { avatarURL in
@@ -263,24 +283,26 @@ struct CommentView: View {
                     .resizable()
                     .frame(width: 30, height: 30)
                     .clipShape(Circle())
-                    .foregroundColor(.gray)
+                    .foregroundColor(.customSecondary)
                 
                 Text(comment.authorName)
                     .font(.subheadline)
                     .fontWeight(.semibold)
+                    .foregroundColor(.customTextPrimary)
                 
                 Spacer()
                 
                 Text(comment.createdAt, style: .date)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.customTextSecondary)
             }
             
             Text(comment.content)
                 .font(.body)
+                .foregroundColor(.customTextPrimary)
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.customSecondary.opacity(0.1))
         .cornerRadius(8)
     }
 }
