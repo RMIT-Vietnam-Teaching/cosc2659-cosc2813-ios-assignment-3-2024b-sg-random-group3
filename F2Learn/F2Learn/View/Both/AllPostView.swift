@@ -7,22 +7,41 @@ struct AllPostsView: View {
     @State private var showingPostDetail = false
     
     var body: some View {
-        NavigationView {
-            List(postViewModel.posts.filter { !$0.isAdminPost && $0.isApproved }) { post in
-                PostRow(post: post, postViewModel: postViewModel)
-                    .onTapGesture {
-                        selectedPost = post
-                        showingPostDetail = true
+        VStack(spacing: 0) {
+            Text("All Posts")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.customBackground)
+            
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    ForEach(postViewModel.posts.filter { !$0.isAdminPost && $0.isApproved }) { post in
+                        VStack(spacing: 0) {
+                            PostRow(post: post, postViewModel: postViewModel)
+                                .padding(.horizontal)
+                                .padding(.vertical, 8)
+                                .background(Color.customBackground)
+                                .onTapGesture {
+                                    selectedPost = post
+                                    showingPostDetail = true
+                                }
+                            
+                            Divider()
+                                .background(Color.customSecondary.opacity(0.5))
+                        }
                     }
-            }
-            .navigationTitle("All Posts")
-            .onAppear {
-                postViewModel.fetchPosts(isAdmin: false)
-            }
-            .sheet(isPresented: $showingPostDetail) {
-                if let post = selectedPost {
-                    PostDetailView(post: post, postViewModel: postViewModel)
                 }
+            }
+            .background(Color.customBackground)
+        }
+        .onAppear {
+            postViewModel.fetchPosts(isAdmin: false)
+        }
+        .sheet(isPresented: $showingPostDetail) {
+            if let post = selectedPost {
+                PostDetailView(post: post, postViewModel: postViewModel)
             }
         }
     }
@@ -41,17 +60,21 @@ struct PostRow: View {
                 VStack(alignment: .leading) {
                     Text(post.authorName)
                         .font(.headline)
+                        .foregroundColor(.customTextPrimary)
                     Text(post.createdAt, style: .date)
                         .font(.caption)
+                        .foregroundColor(.customTextSecondary)
                 }
             }
             
             Text(post.title)
                 .font(.title3)
                 .fontWeight(.bold)
+                .foregroundColor(.customTextPrimary)
             Text(post.content)
                 .font(.body)
                 .lineLimit(3)
+                .foregroundColor(.customTextPrimary)
             
             HStack {
                 Button(action: {
@@ -61,11 +84,13 @@ struct PostRow: View {
                         .foregroundColor(.red)
                 }
                 Label("\(post.comments.count)", systemImage: "bubble.left")
+                    .foregroundColor(.customTextSecondary)
                 Spacer()
                 Text(post.subjectCategory.rawValue)
                     .font(.caption)
                     .padding(4)
-                    .background(Color.blue.opacity(0.1))
+                    .background(Color.customPrimary.opacity(0.1))
+                    .foregroundColor(.customPrimary)
                     .cornerRadius(4)
             }
             .font(.caption)
@@ -120,6 +145,7 @@ struct PostDetailView: View {
                         likePost()
                     }) {
                         Label("\(post.likes)", systemImage: post.likedBy.contains(authViewModel.currentUser?.id ?? "") ? "heart.fill" : "heart")
+                            .foregroundColor(.red)
                     }
                     Spacer()
                     Text(post.subjectCategory.rawValue)
