@@ -138,4 +138,10 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
+    
+    func updateCurrentUserAvatar(_ url: URL?) {
+            currentUser?.avatar = url?.absoluteString
+            objectWillChange.send()
+        }
+
 }

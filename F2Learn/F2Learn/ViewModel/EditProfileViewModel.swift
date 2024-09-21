@@ -11,6 +11,7 @@ class EditProfileViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    @Published var avatarURL: URL?
     
     private var authViewModel: AuthViewModel
     private let storage = Storage.storage()
@@ -56,9 +57,9 @@ class EditProfileViewModel: ObservableObject {
                 switch result {
                 case .success(let url):
                     updateData["avatar"] = url.absoluteString
+                    self.avatarURL = url
                     self.performUpdate(userId: userId, data: updateData)
                 case .failure(let error):
-                    print("Avatar upload error: \(error.localizedDescription)")
                     self.showAlert(message: "Failed to upload avatar: \(error.localizedDescription)")
                     self.isLoading = false
                 }
@@ -67,7 +68,7 @@ class EditProfileViewModel: ObservableObject {
             performUpdate(userId: userId, data: updateData)
         }
     }
-    
+
     private func performUpdate(userId: String, data: [String: Any]) {
         db.collection("users").document(userId).updateData(data) { error in
             DispatchQueue.main.async {
@@ -76,7 +77,7 @@ class EditProfileViewModel: ObservableObject {
                     self.showAlert(message: "Failed to update profile: \(error.localizedDescription)")
                 } else {
                     self.showAlert(message: "Profile updated successfully")
-                    self.authViewModel.fetchUser(userId: userId) { _ in }
+                    self.authViewModel.updateCurrentUserAvatar(self.avatarURL)
                 }
             }
         }

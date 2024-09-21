@@ -64,11 +64,29 @@ struct UserDashboardView: View {
     }
     
     var profileButton: some View {
-        Button(action: { showingProfile = true }) {
-            Image(systemName: "person.crop.circle")
-                .foregroundColor(.customPrimary)
+            Button(action: { showingProfile = true }) {
+                if let avatarURL = authViewModel.currentUser?.avatar,
+                   let url = URL(string: avatarURL) {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
+                    } placeholder: {
+                        Image(systemName: "person.crop.circle")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.customPrimary)
+                    }
+                } else {
+                    Image(systemName: "person.crop.circle")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.customPrimary)
+                }
+            }
         }
-    }
     
     var notificationButton: some View {
         Button(action: { showingNotifications = true }) {
@@ -146,10 +164,25 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .foregroundColor(.customPrimary)
+            if let avatarURL = user.avatar, let url = URL(string: avatarURL) {
+                AsyncImage(url: url) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                } placeholder: {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.customPrimary)
+                }
+            } else {
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.customPrimary)
+            }
             
             Text(user.fullname)
                 .font(.title)
@@ -162,6 +195,7 @@ struct ProfileView: View {
         .padding()
     }
 }
+
 
 struct NotificationsView: View {
     // Implement notifications view
