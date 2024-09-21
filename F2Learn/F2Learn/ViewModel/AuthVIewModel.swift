@@ -9,6 +9,18 @@ class AuthViewModel: ObservableObject {
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
     
+    init() {
+        checkAuthenticationState()
+    }
+    
+    func checkAuthenticationState() {
+        if let user = auth.currentUser {
+            fetchUser(userId: user.uid) { success in
+                self.isAuthenticated = success
+            }
+        }
+    }
+    
     func signUp(fullname: String, email: String, phone: String, password: String, completion: @escaping (Bool, String?) -> Void) {
         auth.createUser(withEmail: email, password: password) { [weak self] authResult, error in
             if let error = error {
