@@ -4,6 +4,7 @@ struct SplashScreenView: View {
     @Binding var isActive: Bool
     @State private var size = 0.8
     @State private var opacity = 0.5
+    @State private var rotation: Double = 0
     @State private var currentInfoIndex = 0
     
     let appInfo = [
@@ -26,10 +27,17 @@ struct SplashScreenView: View {
                         .frame(width: min(geometry.size.width * 0.6, 300), height: min(geometry.size.width * 0.6, 300))
                         .background(Circle().fill(Color.white).shadow(radius: 10))
                         .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                        .rotationEffect(.degrees(rotation))
+                        .scaleEffect(size)
+                        .opacity(opacity)
+                        .animation(.easeInOut(duration: 1.5), value: size)
                     
                     Text("F2Learn")
                         .font(.system(size: min(geometry.size.width * 0.1, 60), weight: .bold, design: .rounded))
                         .foregroundColor(.white)
+                        .scaleEffect(size)
+                        .opacity(opacity)
+                        .animation(.easeInOut(duration: 1.5), value: opacity)
                     
                     Text(appInfo[currentInfoIndex])
                         .font(.system(size: min(geometry.size.width * 0.04, 24), weight: .medium, design: .rounded))
@@ -45,6 +53,8 @@ struct SplashScreenView: View {
                             Circle()
                                 .fill(index == currentInfoIndex ? Color.white : Color.white.opacity(0.5))
                                 .frame(width: 8, height: 8)
+                                .scaleEffect(index == currentInfoIndex ? 1.2 : 1.0)
+                                .animation(.spring(), value: currentInfoIndex)
                         }
                     }
                     
@@ -52,19 +62,19 @@ struct SplashScreenView: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .scaleEffect(1.5)
                         .padding(.top, 20)
-                }
-                .scaleEffect(size)
-                .opacity(opacity)
-                .onAppear {
-                    withAnimation(.easeIn(duration: 1.2)) {
-                        self.size = 1.0
-                        self.opacity = 1.0
-                    }
-                    startInfoCycle()
+                        .opacity(opacity)
                 }
             }
         }
         .onAppear {
+            withAnimation(.easeIn(duration: 1.2)) {
+                self.size = 1.0
+                self.opacity = 1.0
+            }
+            withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
+                self.rotation = 360
+            }
+            startInfoCycle()
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                 withAnimation {
                     self.isActive = false
