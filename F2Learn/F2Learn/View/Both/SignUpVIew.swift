@@ -34,9 +34,9 @@ struct SignUpView: View {
                             .foregroundColor(.white)
                         
                         VStack(spacing: 15) {
-                            CustomTextField(text: $fullname, placeholder: "Full Name", icon: "person")
-                            CustomTextField(text: $email, placeholder: "Email", icon: "envelope")
-                            CustomTextField(text: $phone, placeholder: "Phone", icon: "phone")
+                            LoginTextField(text: $fullname, placeholder: "Full Name", icon: "person")
+                            LoginTextField(text: $email, placeholder: "Email", icon: "envelope")
+                            LoginTextField(text: $phone, placeholder: "Phone", icon: "phone")
                             CustomSecureField(text: $password, placeholder: "Password", icon: "lock")
                             CustomSecureField(text: $confirmPassword, placeholder: "Confirm Password", icon: "lock")
                         }

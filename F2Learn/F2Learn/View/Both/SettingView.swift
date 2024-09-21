@@ -43,7 +43,7 @@ struct SettingsView: View {
             EditProfileView(authViewModel: authViewModel)
         }
         .sheet(isPresented: $isShowingChangePassword) {
-            ChangePasswordView(authViewModel: authViewModel)
+            ChangePasswordView()
         }
         .sheet(isPresented: $isShowingTerms) {
             TermsOfServiceView()
@@ -152,32 +152,5 @@ struct SettingsView: View {
                 .background(Color.red)
                 .cornerRadius(10)
         }
-    }
-}
-
-// Placeholder views for additional functionality
-struct EditProfileView: View {
-    @ObservedObject var authViewModel: AuthViewModel
-    var body: some View {
-        Text("Edit Profile View")
-    }
-}
-
-struct ChangePasswordView: View {
-    @ObservedObject var authViewModel: AuthViewModel
-    var body: some View {
-        Text("Change Password View")
-    }
-}
-
-struct TermsOfServiceView: View {
-    var body: some View {
-        Text("Terms of Service")
-    }
-}
-
-struct PrivacyPolicyView: View {
-    var body: some View {
-        Text("Privacy Policy")
     }
 }
