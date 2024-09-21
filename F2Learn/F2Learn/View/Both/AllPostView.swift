@@ -5,6 +5,7 @@ struct AllPostsView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @State private var selectedPost: Post?
     @State private var showingPostDetail = false
+    @AppStorage("isDarkMode") private var isDarkMode = false
     
     var body: some View {
         VStack(spacing: 0) {

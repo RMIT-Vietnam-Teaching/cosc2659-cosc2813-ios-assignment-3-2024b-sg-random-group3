@@ -43,7 +43,7 @@ struct SettingsView: View {
             EditProfileView(authViewModel: authViewModel)
         }
         .sheet(isPresented: $isShowingChangePassword) {
-            ChangePasswordView(authViewModel: authViewModel)
+            ChangePasswordView()
         }
         .sheet(isPresented: $isShowingTerms) {
             TermsOfServiceView()
@@ -54,32 +54,47 @@ struct SettingsView: View {
     }
     
     private var profileSection: some View {
-        HStack {
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .frame(width: 60, height: 60)
-                .foregroundColor(.customPrimary)
-            
-            VStack(alignment: .leading) {
-                Text(authViewModel.currentUser?.fullname ?? "User")
-                    .font(.title2)
-                    .foregroundColor(.customTextPrimary)
-                Text(authViewModel.currentUser?.email ?? "")
-                    .font(.subheadline)
-                    .foregroundColor(.customTextSecondary)
+            HStack {
+                if let avatarURL = authViewModel.currentUser?.avatar, let url = URL(string: avatarURL) {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 60, height: 60)
+                            .clipShape(Circle())
+                    } placeholder: {
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.customPrimary)
+                    }
+                } else {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .foregroundColor(.customPrimary)
+                }
+                
+                VStack(alignment: .leading) {
+                    Text(authViewModel.currentUser?.fullname ?? "User")
+                        .font(.title2)
+                        .foregroundColor(.customTextPrimary)
+                    Text(authViewModel.currentUser?.email ?? "")
+                        .font(.subheadline)
+                        .foregroundColor(.customTextSecondary)
+                }
+                
+                Spacer()
+                
+                Button(action: { isShowingEditProfile = true }) {
+                    Image(systemName: "pencil")
+                        .foregroundColor(.customPrimary)
+                }
             }
-            
-            Spacer()
-            
-            Button(action: { isShowingEditProfile = true }) {
-                Image(systemName: "pencil")
-                    .foregroundColor(.customPrimary)
-            }
+            .padding()
+            .background(Color.customSecondary.opacity(0.1))
+            .cornerRadius(15)
         }
-        .padding()
-        .background(Color.customSecondary.opacity(0.1))
-        .cornerRadius(15)
-    }
     
     private func settingsSection(geometry: GeometryProxy) -> some View {
         VStack(spacing: 15) {
@@ -152,32 +167,5 @@ struct SettingsView: View {
                 .background(Color.red)
                 .cornerRadius(10)
         }
-    }
-}
-
-// Placeholder views for additional functionality
-struct EditProfileView: View {
-    @ObservedObject var authViewModel: AuthViewModel
-    var body: some View {
-        Text("Edit Profile View")
-    }
-}
-
-struct ChangePasswordView: View {
-    @ObservedObject var authViewModel: AuthViewModel
-    var body: some View {
-        Text("Change Password View")
-    }
-}
-
-struct TermsOfServiceView: View {
-    var body: some View {
-        Text("Terms of Service")
-    }
-}
-
-struct PrivacyPolicyView: View {
-    var body: some View {
-        Text("Privacy Policy")
     }
 }

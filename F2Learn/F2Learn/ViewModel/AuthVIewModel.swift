@@ -106,7 +106,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    private func fetchUser(userId: String, completion: @escaping (Bool) -> Void) {
+    public func fetchUser(userId: String, completion: @escaping (Bool) -> Void) {
         db.collection("users").document(userId).getDocument { [weak self] document, error in
             if let document = document, document.exists,
                let data = document.data(),
@@ -117,7 +117,8 @@ class AuthViewModel: ObservableObject {
                let role = User.UserRole(rawValue: roleString),
                let createdDate = (data["createdDate"] as? Timestamp)?.dateValue(),
                let lastActive = (data["lastActive"] as? Timestamp)?.dateValue() {
-                let user = User(id: userId, fullname: fullname, email: email, phone: phone, role: role, createdDate: createdDate, lastActive: lastActive)
+                let avatarURL = data["avatar"] as? String
+                let user = User(id: userId, fullname: fullname, email: email, phone: phone, avatar: avatarURL, role: role, createdDate: createdDate, lastActive: lastActive)
                 self?.currentUser = user
                 completion(true)
             } else {
@@ -125,6 +126,7 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
+
     
     private func updateLastActive(userId: String) {
         let now = Date()
@@ -138,4 +140,10 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
+    
+    func updateCurrentUserAvatar(_ url: URL?) {
+            currentUser?.avatar = url?.absoluteString
+            objectWillChange.send()
+        }
+
 }

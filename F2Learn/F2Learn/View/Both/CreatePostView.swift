@@ -4,6 +4,7 @@ struct CreatePostView: View {
     @ObservedObject var postViewModel: PostViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
+    @AppStorage("isDarkMode") private var isDarkMode = false
     
     @State private var title = ""
     @State private var content = ""
