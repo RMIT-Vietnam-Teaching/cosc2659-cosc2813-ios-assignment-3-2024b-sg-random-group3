@@ -18,6 +18,7 @@
 		1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C47A2C987DF70084AA52 /* UserDetailView.swift */; };
 		1788907A2C9D2ADB00C1D19F /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */; };
 		1788907D2C9D2CC800C1D19F /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1788907C2C9D2CC800C1D19F /* ColorScheme.swift */; };
+		179AEF6C2C9E8C3D00D66EFA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179AEF6B2C9E8C3700D66EFA /* SettingView.swift */; };
 		179DBB5B2C9A98A500EEA2DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB5A2C9A98A500EEA2DF /* User.swift */; };
 		179DBB5D2C9A98C700EEA2DF /* AdminDashBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */; };
 		17C185572C997DAA00FFE397 /* UserTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C185562C997DAA00FFE397 /* UserTestingView.swift */; };
@@ -79,6 +80,7 @@
 		1781C47A2C987DF70084AA52 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		1788907C2C9D2CC800C1D19F /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		179AEF6B2C9E8C3700D66EFA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		179DBB5A2C9A98A500EEA2DF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashBoardModel.swift; sourceTree = "<group>"; };
 		17C185562C997DAA00FFE397 /* UserTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTestingView.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		17C65FC32C9B1FA400972495 /* Both */ = {
 			isa = PBXGroup;
 			children = (
+				179AEF6B2C9E8C3700D66EFA /* SettingView.swift */,
 				1780210D2C9DD1F700F02FEF /* ExploreView.swift */,
 				1714C8472C9D86B1001AE933 /* TextView.swift */,
 				1714C8452C9D7F53001AE933 /* WelcomeView.swift */,
@@ -451,6 +454,7 @@
 				17C5408F2C9AC23B00095530 /* PostViewModel.swift in Sources */,
 				17F56D2E2C97F5E100055429 /* LoginView.swift in Sources */,
 				1781C4792C987DC40084AA52 /* UserListView.swift in Sources */,
+				179AEF6C2C9E8C3D00D66EFA /* SettingView.swift in Sources */,
 				17C65FC82C9B2BE200972495 /* UserDashBoardViewModel.swift in Sources */,
 				1788907D2C9D2CC800C1D19F /* ColorScheme.swift in Sources */,
 				170FF0A52C981BEE004118C8 /* AdminDashBoardView.swift in Sources */,

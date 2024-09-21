@@ -17,7 +17,7 @@ struct F2LearnApp: App {
                 .preferredColorScheme(isDarkMode ? .dark : .light)
         }
     }
-    
+   
     private func setupFirebase() {
         FirebaseApp.configure()
     }
