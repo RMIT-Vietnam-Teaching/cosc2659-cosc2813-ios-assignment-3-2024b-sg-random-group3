@@ -15,8 +15,6 @@ struct CreatePostView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 20) {
-                    headerView
-                    
                     VStack(spacing: 15) {
                         titleField
                         contentField(geometry: geometry)
@@ -42,12 +40,6 @@ struct CreatePostView: View {
                 }
             )
         }
-    }
-    
-    private var headerView: some View {
-        Text("Create Post")
-            .font(.system(size: 28, weight: .bold, design: .rounded))
-            .foregroundColor(.customTextPrimary)
     }
     
     private var titleField: some View {
