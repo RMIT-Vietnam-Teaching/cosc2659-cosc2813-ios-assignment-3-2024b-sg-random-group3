@@ -32,6 +32,7 @@
 		17C65FC82C9B2BE200972495 /* UserDashBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C65FC72C9B2BE200972495 /* UserDashBoardViewModel.swift */; };
 		17C65FCA2C9B33F200972495 /* AllPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C65FC92C9B33F200972495 /* AllPostView.swift */; };
 		17C65FCC2C9B340900972495 /* SavePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C65FCB2C9B340900972495 /* SavePostsView.swift */; };
+		17F11A1E2C9ECF0C00AFFCE3 /* CreatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F11A1D2C9ECF0400AFFCE3 /* CreatePostViewModel.swift */; };
 		17F56CEB2C97ED6600055429 /* F2LearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEA2C97ED6600055429 /* F2LearnApp.swift */; };
 		17F56CED2C97ED6600055429 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F56CEC2C97ED6600055429 /* ContentView.swift */; };
 		17F56CEF2C97ED6800055429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F56CEE2C97ED6800055429 /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		17C65FC72C9B2BE200972495 /* UserDashBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDashBoardViewModel.swift; sourceTree = "<group>"; };
 		17C65FC92C9B33F200972495 /* AllPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostView.swift; sourceTree = "<group>"; };
 		17C65FCB2C9B340900972495 /* SavePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePostsView.swift; sourceTree = "<group>"; };
+		17F11A1D2C9ECF0400AFFCE3 /* CreatePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewModel.swift; sourceTree = "<group>"; };
 		17F56CE72C97ED6600055429 /* F2Learn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F2Learn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F56CEA2C97ED6600055429 /* F2LearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2LearnApp.swift; sourceTree = "<group>"; };
 		17F56CEC2C97ED6600055429 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		17F56D292C97F5A600055429 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				17F11A1D2C9ECF0400AFFCE3 /* CreatePostViewModel.swift */,
 				17C65FC72C9B2BE200972495 /* UserDashBoardViewModel.swift */,
 				17F56D2A2C97F5BB00055429 /* AuthVIewModel.swift */,
 				170FF0A62C9821CA004118C8 /* AdminDashBoardViewModel.swift */,
@@ -456,6 +459,7 @@
 				1781C4792C987DC40084AA52 /* UserListView.swift in Sources */,
 				179AEF6C2C9E8C3D00D66EFA /* SettingView.swift in Sources */,
 				17C65FC82C9B2BE200972495 /* UserDashBoardViewModel.swift in Sources */,
+				17F11A1E2C9ECF0C00AFFCE3 /* CreatePostViewModel.swift in Sources */,
 				1788907D2C9D2CC800C1D19F /* ColorScheme.swift in Sources */,
 				170FF0A52C981BEE004118C8 /* AdminDashBoardView.swift in Sources */,
 				17C540932C9AC34D00095530 /* ImagePicker.swift in Sources */,

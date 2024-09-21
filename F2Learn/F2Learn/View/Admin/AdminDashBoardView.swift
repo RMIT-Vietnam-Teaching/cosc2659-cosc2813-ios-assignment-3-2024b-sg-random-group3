@@ -26,7 +26,7 @@ struct AdminDashboardView: View {
                     }
                 )
                 .background(
-                    NavigationLink(destination: CreatePostView(postViewModel: viewModel.postViewModel), isActive: $isShowingCreatePost) {
+                    NavigationLink(destination: CreatePostView(), isActive: $isShowingCreatePost) {
                         EmptyView()
                     }
                 )

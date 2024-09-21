@@ -22,7 +22,7 @@ struct UserDashboardView: View {
                     }
                     .tag(1)
                 
-                CreatePostView(postViewModel: postViewModel)
+                CreatePostView()
                     .tabItem {
                         Label("Create", systemImage: "plus.circle.fill")
                     }
