@@ -106,7 +106,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    private func fetchUser(userId: String, completion: @escaping (Bool) -> Void) {
+    public func fetchUser(userId: String, completion: @escaping (Bool) -> Void) {
         db.collection("users").document(userId).getDocument { [weak self] document, error in
             if let document = document, document.exists,
                let data = document.data(),

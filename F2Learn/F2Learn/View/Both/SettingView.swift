@@ -155,14 +155,6 @@ struct SettingsView: View {
     }
 }
 
-// Placeholder views for additional functionality
-struct EditProfileView: View {
-    @ObservedObject var authViewModel: AuthViewModel
-    var body: some View {
-        Text("Edit Profile View")
-    }
-}
-
 struct ChangePasswordView: View {
     @ObservedObject var authViewModel: AuthViewModel
     var body: some View {
