@@ -58,6 +58,7 @@ class EditProfileViewModel: ObservableObject {
                     updateData["avatar"] = url.absoluteString
                     self.performUpdate(userId: userId, data: updateData)
                 case .failure(let error):
+                    print("Avatar upload error: \(error.localizedDescription)")
                     self.showAlert(message: "Failed to upload avatar: \(error.localizedDescription)")
                     self.isLoading = false
                 }
@@ -87,7 +88,12 @@ class EditProfileViewModel: ObservableObject {
             return
         }
         
-        let storageRef = storage.reference().child("avatars/\(UUID().uuidString).jpg")
+        guard let userId = authViewModel.currentUser?.id else {
+            completion(.failure(NSError(domain: "EditProfileViewModel", code: 0, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+            return
+        }
+        
+        let storageRef = Storage.storage().reference().child("avatars/\(userId)/profile.jpg")
         
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -109,10 +115,13 @@ class EditProfileViewModel: ObservableObject {
             }
         }
     }
+
+
+
+
     
     func removeProfilePicture() {
         avatar = nil
-        // You may want to update this in your database as well
     }
     
     private func showAlert(message: String) {

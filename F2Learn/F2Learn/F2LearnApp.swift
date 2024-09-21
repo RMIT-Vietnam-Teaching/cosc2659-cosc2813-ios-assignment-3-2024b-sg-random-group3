@@ -1,5 +1,6 @@
 import SwiftUI
 import Firebase
+import FirebaseStorage
 
 @main
 struct F2LearnApp: App {
