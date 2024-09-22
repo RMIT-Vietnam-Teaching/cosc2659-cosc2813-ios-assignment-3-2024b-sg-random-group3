@@ -7,16 +7,16 @@ F2Learn is an educational platform designed to connect educators, students, and 
 It provides a space for sharing educational content, engaging in discussions, and fostering a collaborative learning environment.
 
 ## Team Members
-**Member 1**: [Tran Ngoc Minh] (s3911737)
+**Member 1**: Tran Ngoc Minh – s3911737
 
-**Member 1**: [Tran Ngoc Minh] (s3911737)
+**Member 2**: Nguyeng Duong Truong Thinh – s3914412
 
-**Member 1**: [Tran Ngoc Minh] (s3911737)
+**Member 3**: Dang Minh Triet – s4022878
 
-**Member 1**: [Tran Ngoc Minh] (s3911737)
+**Member 4**: Du Tuan Vu – s3924489
 
 ## Demo video (showcase)
-**Youtube**: https://youtu.be/
+**Youtube**: https://www.youtube.com/@minhtrah3007/videos
 
 ## Features
 
@@ -33,6 +33,8 @@ It provides a space for sharing educational content, engaging in discussions, an
 - Dark Mode Support
 - Data Synchronization
 - Admin Management
+- Forgot Password
+- Reset Password
 
 ## Technologies Used
 
