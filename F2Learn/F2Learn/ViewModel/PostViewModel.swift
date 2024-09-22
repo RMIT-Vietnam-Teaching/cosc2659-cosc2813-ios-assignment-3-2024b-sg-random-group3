@@ -228,6 +228,50 @@ class PostViewModel: ObservableObject {
             completion(false)
         }
     }
+    
+    func fetchUserPostCount(userId: String, completion: @escaping (Int) -> Void) {
+        db.collection("posts")
+            .whereField("authorId", isEqualTo: userId)
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error fetching user post count: \(error)")
+                    completion(0)
+                } else {
+                    completion(snapshot?.documents.count ?? 0)
+                }
+            }
+    }
+    
+    func fetchUserLikeCount(userId: String, completion: @escaping (Int) -> Void) {
+        db.collection("posts")
+            .whereField("likedBy", arrayContains: userId)
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error fetching user like count: \(error)")
+                    completion(0)
+                } else {
+                    completion(snapshot?.documents.count ?? 0)
+                }
+            }
+    }
+    
+    func fetchUserCommentCount(userId: String, completion: @escaping (Int) -> Void) {
+        db.collection("posts")
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error fetching user comment count: \(error)")
+                    completion(0)
+                } else {
+                    let commentCount = snapshot?.documents.reduce(0) { count, document in
+                        if let post = try? document.data(as: Post.self) {
+                            return count + post.comments.filter { $0.authorId == userId }.count
+                        }
+                        return count
+                    } ?? 0
+                    completion(commentCount)
+                }
+            }
+    }
 }
 
 extension Comment {

@@ -45,7 +45,7 @@ struct UserDashboardView: View {
             .navigationBarItems(leading: profileButton, trailing: notificationButton)
         }
         .sheet(isPresented: $showingProfile) {
-            ProfileView(user: authViewModel.currentUser!)
+            ProfileView(postViewModel: postViewModel)
         }
         .sheet(isPresented: $showingNotifications) {
             NotificationsView()
@@ -158,44 +158,6 @@ struct FeaturedPostCard: View {
         .shadow(color: Color.customSecondary.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
-
-struct ProfileView: View {
-    let user: User
-    
-    var body: some View {
-        VStack {
-            if let avatarURL = user.avatar, let url = URL(string: avatarURL) {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                } placeholder: {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(.customPrimary)
-                }
-            } else {
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.customPrimary)
-            }
-            
-            Text(user.fullname)
-                .font(.title)
-                .fontWeight(.bold)
-            
-            Text(user.email)
-                .font(.subheadline)
-                .foregroundColor(.customTextSecondary)
-        }
-        .padding()
-    }
-}
-
 
 struct NotificationsView: View {
     // Implement notifications view
