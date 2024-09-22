@@ -8,8 +8,11 @@ It provides a space for sharing educational content, engaging in discussions, an
 
 ## Team Members
 **Member 1**: [Tran Ngoc Minh] (s3911737)
+
 **Member 1**: [Tran Ngoc Minh] (s3911737)
+
 **Member 1**: [Tran Ngoc Minh] (s3911737)
+
 **Member 1**: [Tran Ngoc Minh] (s3911737)
 
 ## Demo video (showcase)
