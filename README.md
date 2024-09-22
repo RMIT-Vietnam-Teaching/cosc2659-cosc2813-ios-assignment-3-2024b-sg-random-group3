@@ -79,3 +79,7 @@ F2Learn follows the MVVM (Model-View-ViewModel) architecture:
 - CustomAccent: #FF9F0A
 - CustomTextPrimary: #FFFFFF
 - CustomTextSecondary: #EBEBF5
+
+## Firebase Rules
+
+The project includes Firebase Security Rules for Firestore and Storage. These rules ensure proper access control and data validation. You can find the rules in the `FireBaseRule.txt` file.
