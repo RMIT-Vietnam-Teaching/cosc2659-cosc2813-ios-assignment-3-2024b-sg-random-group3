@@ -21,7 +21,6 @@
 		1781C4792C987DC40084AA52 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C4782C987DC40084AA52 /* UserListView.swift */; };
 		1781C47B2C987DF70084AA52 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781C47A2C987DF70084AA52 /* UserDetailView.swift */; };
 		1788907A2C9D2ADB00C1D19F /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */; };
-		1788907D2C9D2CC800C1D19F /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1788907C2C9D2CC800C1D19F /* ColorScheme.swift */; };
 		179AEF6C2C9E8C3D00D66EFA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179AEF6B2C9E8C3700D66EFA /* SettingView.swift */; };
 		179DBB5B2C9A98A500EEA2DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB5A2C9A98A500EEA2DF /* User.swift */; };
 		179DBB5D2C9A98C700EEA2DF /* AdminDashBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */; };
@@ -89,7 +88,6 @@
 		1781C4782C987DC40084AA52 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1781C47A2C987DF70084AA52 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		1788907C2C9D2CC800C1D19F /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		179AEF6B2C9E8C3700D66EFA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		179DBB5A2C9A98A500EEA2DF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		179DBB5C2C9A98C700EEA2DF /* AdminDashBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDashBoardModel.swift; sourceTree = "<group>"; };
@@ -153,14 +151,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1788907B2C9D2CB600C1D19F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1788907C2C9D2CC800C1D19F /* ColorScheme.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		179DBB592C9A989600EEA2DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,10 +164,10 @@
 		17C65FC12C9B1B2D00972495 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
-				17C65FBD2C9AE74F00972495 /* UnapprovedPostsView.swift */,
 				170FF0A42C981BEE004118C8 /* AdminDashBoardView.swift */,
-				1781C4782C987DC40084AA52 /* UserListView.swift */,
+				17C65FBD2C9AE74F00972495 /* UnapprovedPostsView.swift */,
 				1781C47A2C987DF70084AA52 /* UserDetailView.swift */,
+				1781C4782C987DC40084AA52 /* UserListView.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -185,10 +175,10 @@
 		17C65FC22C9B1D8400972495 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				1780210F2C9DE28000F02FEF /* UserPostView.swift */,
-				17C65FBF2C9AEB2E00972495 /* UserDashBoardView.swift */,
-				17C185562C997DAA00FFE397 /* UserTestingView.swift */,
 				17C65FCB2C9B340900972495 /* SavePostsView.swift */,
+				17C65FBF2C9AEB2E00972495 /* UserDashBoardView.swift */,
+				1780210F2C9DE28000F02FEF /* UserPostView.swift */,
+				17C185562C997DAA00FFE397 /* UserTestingView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -196,22 +186,22 @@
 		17C65FC32C9B1FA400972495 /* Both */ = {
 			isa = PBXGroup;
 			children = (
-				1741DB5B2C9F02400021FDA3 /* PrivacyPolicyView.swift */,
-				1741DB592C9F01E10021FDA3 /* TermsOfServiceView.swift */,
-				1741DB572C9F004F0021FDA3 /* ChangePasswordView.swift */,
-				17F11A212C9ED94D00AFFCE3 /* EditProfileView.swift */,
-				179AEF6B2C9E8C3700D66EFA /* SettingView.swift */,
-				1780210D2C9DD1F700F02FEF /* ExploreView.swift */,
-				1714C8472C9D86B1001AE933 /* TextView.swift */,
-				1714C8452C9D7F53001AE933 /* WelcomeView.swift */,
-				1714C8432C9D7C8D001AE933 /* SplashScreenView.swift */,
-				17F56D2D2C97F5E100055429 /* LoginView.swift */,
-				17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */,
-				178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */,
-				17C540902C9AC26A00095530 /* CreatePostView.swift */,
-				17C540922C9AC34D00095530 /* ImagePicker.swift */,
 				17C65FC42C9B212200972495 /* AdminPostView.swift */,
 				17C65FC92C9B33F200972495 /* AllPostView.swift */,
+				1741DB572C9F004F0021FDA3 /* ChangePasswordView.swift */,
+				17C540902C9AC26A00095530 /* CreatePostView.swift */,
+				17F11A212C9ED94D00AFFCE3 /* EditProfileView.swift */,
+				1780210D2C9DD1F700F02FEF /* ExploreView.swift */,
+				178890792C9D2AD900C1D19F /* ForgotPasswordView.swift */,
+				17C540922C9AC34D00095530 /* ImagePicker.swift */,
+				17F56D2D2C97F5E100055429 /* LoginView.swift */,
+				1741DB5B2C9F02400021FDA3 /* PrivacyPolicyView.swift */,
+				179AEF6B2C9E8C3700D66EFA /* SettingView.swift */,
+				17F56D2F2C97F5FA00055429 /* SignUpVIew.swift */,
+				1714C8432C9D7C8D001AE933 /* SplashScreenView.swift */,
+				1741DB592C9F01E10021FDA3 /* TermsOfServiceView.swift */,
+				1714C8472C9D86B1001AE933 /* TextView.swift */,
+				1714C8452C9D7F53001AE933 /* WelcomeView.swift */,
 			);
 			path = Both;
 			sourceTree = "<group>";
@@ -301,7 +291,6 @@
 		17F56D2C2C97F5D300055429 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1788907B2C9D2CB600C1D19F /* Extensions */,
 				17C65FC32C9B1FA400972495 /* Both */,
 				17C65FC22C9B1D8400972495 /* User */,
 				17C65FC12C9B1B2D00972495 /* Admin */,
@@ -478,7 +467,6 @@
 				179AEF6C2C9E8C3D00D66EFA /* SettingView.swift in Sources */,
 				17C65FC82C9B2BE200972495 /* UserDashBoardViewModel.swift in Sources */,
 				17F11A242C9ED98300AFFCE3 /* EditProfileViewModel.swift in Sources */,
-				1788907D2C9D2CC800C1D19F /* ColorScheme.swift in Sources */,
 				170FF0A52C981BEE004118C8 /* AdminDashBoardView.swift in Sources */,
 				17C540932C9AC34D00095530 /* ImagePicker.swift in Sources */,
 				1741DB5C2C9F02460021FDA3 /* PrivacyPolicyView.swift in Sources */,
