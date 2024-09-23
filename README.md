@@ -16,7 +16,7 @@ It provides a space for sharing educational content, engaging in discussions, an
 **Member 4**: Du Tuan Vu – s3924489
 
 ## Demo video (showcase)
-**Youtube**: https://www.youtube.com/@minhtrah3007/videos
+**Youtube**: https://www.youtube.com/@Vuvedev/videos
 
 ## Features
 
