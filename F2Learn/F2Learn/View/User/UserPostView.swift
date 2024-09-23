@@ -45,7 +45,7 @@ struct UserPostsView: View {
         }
         .sheet(isPresented: $showingPostDetail) {
             if let post = selectedPost {
-                UserPostDetailView(post: post, postViewModel: postViewModel, showingEditView: $showingEditView, showingDeleteConfirmation: $showingDeleteConfirmation, postToDelete: $postToDelete)
+                UserPostDetailView(post: post, postViewModel: postViewModel, showingEditView: $showingEditView)
             }
         }
         .sheet(isPresented: $showingEditView) {
@@ -53,18 +53,7 @@ struct UserPostsView: View {
                 EditPostView(post: post, postViewModel: postViewModel)
             }
         }
-        .alert(isPresented: $showingDeleteConfirmation) {
-            Alert(
-                title: Text("Delete Post"),
-                message: Text("Are you sure you want to delete this post?"),
-                primaryButton: .destructive(Text("Delete")) {
-                    if let post = postToDelete {
-                        deletePost(post)
-                    }
-                },
-                secondaryButton: .cancel()
-            )
-        }
+       
     }
     
     private func deletePost(_ post: Post) {
@@ -113,9 +102,9 @@ struct UserPostDetailView: View {
     let post: Post
     @ObservedObject var postViewModel: PostViewModel
     @Binding var showingEditView: Bool
-    @Binding var showingDeleteConfirmation: Bool
-    @Binding var postToDelete: Post?
-    
+    @State private var showingDeleteConfirmation = false
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -138,7 +127,7 @@ struct UserPostDetailView: View {
                         .font(.caption)
                         .foregroundColor(post.isApproved ? .green : .orange)
                 }
-                
+
                 if !post.isApproved {
                     Button("Edit") {
                         showingEditView = true
@@ -149,9 +138,8 @@ struct UserPostDetailView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
-                
+
                 Button("Delete") {
-                    postToDelete = post
                     showingDeleteConfirmation = true
                 }
                 .frame(maxWidth: .infinity)
@@ -163,6 +151,26 @@ struct UserPostDetailView: View {
             .padding()
         }
         .navigationTitle("Post Details")
+        .alert(isPresented: $showingDeleteConfirmation) {
+            Alert(
+                title: Text("Delete Post"),
+                message: Text("Are you sure you want to delete this post?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    deletePost(post)
+                },
+                secondaryButton: .cancel()
+            )
+        }
+    }
+
+    private func deletePost(_ post: Post) {
+        guard let postId = post.id else { return }
+        postViewModel.deletePost(postId: postId) { success in
+            if success {
+                // Dismiss the sheet after deletion
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 }
 

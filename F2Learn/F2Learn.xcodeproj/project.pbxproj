@@ -85,6 +85,7 @@
 		1741DB572C9F004F0021FDA3 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		1741DB592C9F01E10021FDA3 /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
 		1741DB5B2C9F02400021FDA3 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		1771AE5F2CA0F287002776B8 /* F2Learn.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = F2Learn.xcodeproj; sourceTree = SOURCE_ROOT; };
 		1780210D2C9DD1F700F02FEF /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		1780210F2C9DE28000F02FEF /* UserPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostView.swift; sourceTree = "<group>"; };
 		1781C4782C987DC40084AA52 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 		17F56CDE2C97ED6600055429 = {
 			isa = PBXGroup;
 			children = (
+				1771AE5F2CA0F287002776B8 /* F2Learn.xcodeproj */,
 				17F56CE92C97ED6600055429 /* F2Learn */,
 				17F56CFA2C97ED6800055429 /* F2LearnTests */,
 				17F56D042C97ED6800055429 /* F2LearnUITests */,
