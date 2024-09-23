@@ -147,12 +147,13 @@ class PostViewModel: ObservableObject {
                 post.likedBy.append(userId)
             }
             
-            do {
-                try transaction.setData(from: post, forDocument: postRef)
-            } catch let error as NSError {
-                errorPointer?.pointee = error
-                return nil
-            }
+            // Only update the 'likes' and 'likedBy' fields
+            let updatedData: [String: Any] = [
+                "likes": post.likes,
+                "likedBy": post.likedBy
+            ]
+            
+            transaction.updateData(updatedData, forDocument: postRef)
             
             return post
         }) { (object, error) in
@@ -167,6 +168,7 @@ class PostViewModel: ObservableObject {
             }
         }
     }
+
     
     private func updatePostInList(_ updatedPost: Post) {
         if let index = posts.firstIndex(where: { $0.id == updatedPost.id }) {
