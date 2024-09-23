@@ -18,49 +18,24 @@ import SwiftUI
 struct UserPostsView: View {
     @ObservedObject var postViewModel: PostViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
-    @State private var selectedPost: Post?
-    @State private var showingPostDetail = false
-    @State private var showingEditView = false
-    @State private var showingDeleteConfirmation = false
-    @State private var postToDelete: Post?
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(postViewModel.posts.filter { $0.authorId == authViewModel.currentUser?.id }) { post in
-                        UserPostCard(post: post)
-                            .onTapGesture {
-                                selectedPost = post
-                                showingPostDetail = true
+        NavigationView {
+            GeometryReader { geometry in
+                ScrollView {
+                    LazyVStack(spacing: 16) {
+                        ForEach(postViewModel.posts.filter { $0.authorId == authViewModel.currentUser?.id }) { post in
+                            NavigationLink(destination: UserPostDetailView(post: post, postViewModel: postViewModel)) {
+                                UserPostCard(post: post)
                             }
+                        }
                     }
+                    .padding()
                 }
-                .padding()
-            }
-        }
-        .navigationTitle("My Posts")
-        .onAppear {
-            postViewModel.fetchPosts(isAdmin: false)
-        }
-        .sheet(isPresented: $showingPostDetail) {
-            if let post = selectedPost {
-                UserPostDetailView(post: post, postViewModel: postViewModel, showingEditView: $showingEditView)
-            }
-        }
-        .sheet(isPresented: $showingEditView) {
-            if let post = selectedPost, !post.isApproved {
-                EditPostView(post: post, postViewModel: postViewModel)
-            }
-        }
-       
-    }
-    
-    private func deletePost(_ post: Post) {
-        guard let postId = post.id else { return }
-        postViewModel.deletePost(postId: postId) { success in
-            if success {
-                postViewModel.fetchPosts(isAdmin: false)
+                .navigationTitle("My Posts")
+                .onAppear {
+                    postViewModel.fetchPosts(isAdmin: false)
+                }
             }
         }
     }
@@ -101,10 +76,10 @@ struct UserPostCard: View {
 struct UserPostDetailView: View {
     let post: Post
     @ObservedObject var postViewModel: PostViewModel
-    @Binding var showingEditView: Bool
+    @State private var showingEditView = false
     @State private var showingDeleteConfirmation = false
     @Environment(\.presentationMode) var presentationMode
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -127,7 +102,7 @@ struct UserPostDetailView: View {
                         .font(.caption)
                         .foregroundColor(post.isApproved ? .green : .orange)
                 }
-
+                
                 if !post.isApproved {
                     Button("Edit") {
                         showingEditView = true
@@ -138,7 +113,7 @@ struct UserPostDetailView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
-
+                
                 Button("Delete") {
                     showingDeleteConfirmation = true
                 }
@@ -161,13 +136,16 @@ struct UserPostDetailView: View {
                 secondaryButton: .cancel()
             )
         }
+        .sheet(isPresented: $showingEditView) {
+            EditPostView(post: post, postViewModel: postViewModel)
+        }
     }
-
+    
     private func deletePost(_ post: Post) {
         guard let postId = post.id else { return }
         postViewModel.deletePost(postId: postId) { success in
             if success {
-                // Dismiss the sheet after deletion
+                // Dismiss the view after deletion
                 presentationMode.wrappedValue.dismiss()
             }
         }
@@ -203,6 +181,10 @@ struct EditPostView: View {
                 }
             }
             .navigationTitle("Edit Post")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading: Button("Cancel") {
+                presentationMode.wrappedValue.dismiss()
+            })
         }
     }
     
