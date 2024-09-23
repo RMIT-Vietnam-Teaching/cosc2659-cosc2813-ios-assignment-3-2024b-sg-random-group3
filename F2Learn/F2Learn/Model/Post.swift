@@ -47,6 +47,7 @@ struct Comment: Identifiable, Codable {
 }
 
 enum SubjectCategory: String, Codable, CaseIterable {
+    case general = "General"
     case mathematics = "Mathematics"
     case science = "Science"
     case literature = "Literature"

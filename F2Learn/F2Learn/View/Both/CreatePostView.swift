@@ -24,7 +24,7 @@ struct CreatePostView: View {
     @State private var title = ""
     @State private var content = ""
     @State private var tags = ""
-    @State private var selectedCategory: SubjectCategory = .mathematics
+    @State private var selectedCategory: SubjectCategory = .general
     @State private var showingSuccessAlert = false
     @State private var showingClearConfirmation = false
     
